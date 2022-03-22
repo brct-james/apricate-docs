@@ -16,8 +16,6 @@ paths:
   /users:
     get:
       summary: Get Users
-      tags:
-        - Users
       operationId: Get Users
       description: 'Get lists of registered usernames with various filters: unique, active, etc.'
       responses:
@@ -66,6 +64,8 @@ paths:
                   - message
                   - data
       security: []
+      tags:
+        - Metrics
   '/users/{username}':
     parameters:
       - schema:
