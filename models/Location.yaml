@@ -1,0 +1,41 @@
+description: Location entity
+type: object
+x-examples:
+  example-1:
+    name: Homestead Farm
+    symbol: TS-PR-HF
+    region_name: Pria
+    x: -40
+    'y': 70
+    description: The small country farm you retired to after the war
+    npcs:
+      - Vince Kosuga
+properties:
+  name:
+    type: string
+    minLength: 1
+  symbol:
+    type: string
+    minLength: 1
+  region_name:
+    type: string
+    minLength: 1
+  x:
+    type: number
+  'y':
+    type: number
+  description:
+    type: string
+    minLength: 1
+  npcs:
+    type: array
+    items:
+      type: string
+required:
+  - name
+  - symbol
+  - region_name
+  - x
+  - 'y'
+  - description
+  - npcs

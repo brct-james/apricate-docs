@@ -1920,6 +1920,147 @@ paths:
                   - data
       operationId: Get Metrics
       description: Get various server metrics like coins per user and the total number of each good bought and sold
+  /my/locations:
+    get:
+      summary: Get My Locations
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - name: Homestead Farm
+                        symbol: TS-PR-HF
+                        region_name: Pria
+                        x: -40
+                        'y': 70
+                        description: The small country farm you retired to after the war
+                        npcs:
+                          - Vince Kosuga
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/Location.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get My Locations
+      description: Get details on every location visible through the Fog of War (owned farms and locations with an Assistant present)
+  '/my/locations/{location-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: location-symbol
+        in: path
+        required: true
+        description: 'The location symbol, e.g. TS-PR-HF'
+    get:
+      summary: Get Specific Location
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      name: Homestead Farm
+                      symbol: TS-PR-HF
+                      region_name: Pria
+                      x: -40
+                      'y': 70
+                      description: The small country farm you retired to after the war
+                      npcs:
+                        - Vince Kosuga
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Location.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Location
+      description: 'Get details on a specific location, if it is visible through the Fog of War (owned farms and locations with an Assistant present)'
+  /my/nearby-locations:
+    get:
+      summary: Get My Nearby Locations
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      TS-PR:
+                        TS-PR-BG: Balgora
+                        TS-PR-HF: Homestead Farm
+                        TS-PR-PFG: Port Fulgrath
+                        TS-PR-YD: Yudoa
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - TS-PR
+                    description: 'map[String]map[String]String where key is island symbol'
+                    properties:
+                      TS-PR:
+                        type: object
+                        required:
+                          - map_key_location_symbol
+                        description: 'map[String]String where key is location symbol and value is location name'
+                        properties:
+                          map_key_location_symbol:
+                            type: string
+                            minLength: 1
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get My Nearby Locations
+      description: 'Get a map of all islands that are visible through the Fog of War (owned farms and locations with an Assistant present), with sub-maps containing the location-symbols and names of the locations on those islands. Useful for discovering new locations when traveling to an island for the first time'
 components:
   schemas: {}
   securitySchemes:

@@ -224,6 +224,10 @@ You can get general info on the world around you, but to get details you must ha
 
 ...TODO...
 
+### Feedback Questions
+
+- Should `/my/locations` return a map rather than array?
+
 ## Farms Advanced
 
 Eventually players will be able to get multiple farms, each with different bonuses and unique buildings.
