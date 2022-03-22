@@ -235,6 +235,10 @@ Eventually players will be able to get multiple farms, each with different bonus
 `GET: /api/my/farms`
 `GET: /api/my/farms/{location-symbol}`
 
+### Feedback Questions
+
+- Should `/my/farms` return a map rather than array?
+
 ## Markets Advanced
 
 I hope to have adaptive, fully-featured markets with `MARKET` `STOP` `LIMIT` and `STOPLIMIT` order types in the near future.
@@ -248,9 +252,17 @@ I hope to have adaptive, fully-featured markets with `MARKET` `STOP` `LIMIT` and
 
 Assistants are the 'ships' of Apricate, and will cart materials to and from locations for you. They are also how you will interact with NPCs and complete quests. Finally, they provide vision for you in the Fog of War.
 
+### Feedback Questions
+
+- Should `/my/assistants` return a map rather than array?
+
 ## Contracts Advanced
 
 Contracts are given by NPCs throughout the world. To be converted to Quests
+
+### Feedback Questions
+
+- Should `/my/contracts` return a map rather than array?
 
 ## Sizes Advanced
 
