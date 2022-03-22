@@ -34,6 +34,8 @@ The primary goals of this early alpha are:
 
 Please join the Apricate [Discord](https://discord.gg/d9ZCPcAXT6) to report bugs, suggest ideas, or provide other feedback.
 
+You can also contribute changes to the docs directly (or open an Issue) in the [documentation repo](https://github.com/brct-james/apricate-docs).
+
 After completing the beginner guide below you should have a bare minimum knowledge of how to play the game. I've included several "... Advanced" sections in this document with more in-depth information on each major system.
 
 Each advanced section has a list of specific feedback I'm looking for, but don't feel restricted to this if you notice something off-list. Thanks!
