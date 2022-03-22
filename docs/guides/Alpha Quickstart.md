@@ -328,7 +328,14 @@ Growth Stages are the building blocks of plant growth. They are one of the deepe
 
 - Should there be a tools or actions endpoint with a map from Action Name to Tool Name, or is it fun to try and figure out the association yourself
 
-- Should ActionToSkip be removed and just use Optional or maybe Skippable bool to indicate? 
+- Should ActionToSkip be removed and just use Optional or maybe Skippable bool to indicate?
+
+## Response Codes Advanced
+
+The server returns a numeric code with each response. These are documented here:
+
+...TODO...
+
 ## Terminology
 
 The game should follow a consistent terminology. Please report in discord if the documentation or an endpoint uses inconsistent or contradictory terminology.
