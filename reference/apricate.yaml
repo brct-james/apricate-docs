@@ -810,6 +810,269 @@ paths:
                 properties: {}
       operationId: Get Specific Warehouse
       description: Get info on a specific warehouse
+  /markets:
+    get:
+      summary: Get Markets
+      tags:
+        - Markets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - name: Homestead Farm Outlet
+                        location_symbol: TS-PR-HF
+                        imports:
+                          produce:
+                            Cabbage: 1
+                            Potato: 1
+                            Shelvis Fig: 10
+                          seeds:
+                            Cabbage Seeds: 2
+                            Gulb Bulb: 25
+                            Potato Chunk: 1
+                            Shelvis Fig Seeds: 50
+                            Spectral Grass Seeds: 1
+                            Spinosus Vas Seeds: 2
+                          goods:
+                            Enchanted Water: 5
+                            Gulb Nut: 4
+                            Spectral Fiber: 3
+                            Water: 1
+                          tools:
+                            Spade: 1
+                        exports:
+                          produce:
+                            Potato: 2
+                          seeds:
+                            Cabbage Seeds: 4
+                            Gulb Bulb: 50
+                            Potato Chunk: 2
+                            Shelvis Fig Seeds: 100
+                            Spectral Grass Seeds: 2
+                            Spinosus Vas Seeds: 5
+                          goods:
+                            Dragon Fertilizer: 15
+                            Enchanted Dragon Fertilizer: 20
+                            Enchanted Fertilizer: 10
+                            Enchanted Water: 10
+                            Fertilizer: 5
+                            Water: 2
+                          tools:
+                            Hoe: 250
+                            Pitchfork: 500
+                            Rake: 150
+                            Scroll of Hyperspecific Cloud Cover: 250
+                            Shears: 100
+                            Sickle: 100
+                            Spade: 100
+                            Sprouting Pot: 1000
+                            Water Wand: 250
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/Market.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Markets
+      description: Get info on all markets visible to the user
+  '/markets/{location-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: location-symbol
+        in: path
+        required: true
+        description: The market's location symbol
+    get:
+      summary: Get Specific Market
+      tags:
+        - Markets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data: {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Market.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Market
+      description: Get data on a specific market
+  '/markets/{location-symbol}/order':
+    parameters:
+      - schema:
+          type: string
+        name: location-symbol
+        in: path
+        required: true
+        description: The market's location symbol
+    patch:
+      summary: Place Market Order
+      operationId: Place Market Order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      ledger:
+                        currencies:
+                          Coins: 3000
+                        favor:
+                          Vince Kosuga: 50
+                        escrow: {}
+                      warehouse:
+                        uuid: Greenitthe|Warehouse-TS-PR-HF
+                        location_symbol: TS-PR-HF
+                        tools:
+                          Drying Rack: 1
+                          Hoe: 1
+                          Knife: 1
+                          Pestle and Mortar: 1
+                          Pitchfork: 1
+                          Rake: 1
+                          Scroll of Hyperspecific Cloud Cover: 1
+                          Shears: 1
+                          Sickle: 1
+                          Spade: 1
+                          Sprouting Pot: 1
+                          Water Wand: 1
+                        produce: {}
+                        seeds:
+                          Cabbage Seeds: 1000
+                          Gulb Bulb: 1000
+                          Potato Chunk: 1000
+                          Shelvis Fig Seeds: 1000
+                          Spectral Grass Seeds: 1000
+                          Spinosus Vas Seeds: 1000
+                        goods:
+                          Dragon Fertilizer: 1000
+                          Enchanted Dragon Fertilizer: 1000
+                          Enchanted Fertilizer: 1000
+                          Enchanted Water: 1000
+                          Fertilizer: 1000
+                          Water: 1000
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - ledger
+                      - warehouse
+                    properties:
+                      ledger:
+                        type: object
+                        required:
+                          - currencies
+                          - favor
+                          - escrow
+                        properties:
+                          currencies:
+                            type: object
+                          favor:
+                            type: object
+                          escrow:
+                            type: object
+                      warehouse:
+                        $ref: ../models/Warehouse.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      description: Place a market buy/sell order
+      tags:
+        - Markets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  order_type: MARKET
+                  transaction_type: SELL
+                  item_category: PRODUCE
+                  item_name: Potato|Tiny
+                  quantity: 1000
+              properties:
+                order_type:
+                  type: string
+                  minLength: 1
+                  enum:
+                    - MARKET
+                transaction_type:
+                  type: string
+                  minLength: 1
+                  enum:
+                    - BUY
+                    - SELL
+                item_category:
+                  type: string
+                  minLength: 1
+                  enum:
+                    - PRODUCE
+                    - GOODS
+                    - SEEDS
+                    - TOOLS
+                item_name:
+                  type: string
+                  minLength: 1
+                quantity:
+                  type: number
+              required:
+                - order_type
+                - transaction_type
+                - item_category
+                - item_name
+                - quantity
+        description: Request body specifies the market order
 components:
   schemas: {}
   securitySchemes:
