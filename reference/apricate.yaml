@@ -1076,7 +1076,8 @@ paths:
   /plots:
     get:
       summary: Get Plots
-      tags: []
+      tags:
+        - Plots
       responses:
         '200':
           description: OK
@@ -1306,6 +1307,8 @@ paths:
                   quantity: 8
                   size: Tiny
         description: 'Define what plant to plant, as well as size and quantity'
+      tags:
+        - Plots
   '/plots/{plot-id}/clear':
     parameters:
       - schema:
@@ -1350,6 +1353,8 @@ paths:
                   - message
                   - data
       description: Attempt to clear specified plot
+      tags:
+        - Plots
   '/plots/{plot-id}/interact':
     parameters:
       - schema:
@@ -1481,6 +1486,8 @@ paths:
                 - action
         description: Define action and select consumable if applicable
       description: Attempt to interact with a plot to grow plant and/or harvest it
+      tags:
+        - Plots
 components:
   schemas: {}
   securitySchemes:
