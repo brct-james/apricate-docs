@@ -1488,6 +1488,219 @@ paths:
       description: Attempt to interact with a plot to grow plant and/or harvest it
       tags:
         - Plots
+  /islands:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      TS-BD:
+                        name: Boldor
+                        description: A bustling region that attracts wealth as the gateway to the metropolis of Tyldia on the main trade route taken by the rural craftspeople of smaller regions.
+                        ports:
+                          Skellig:
+                            name: Port Geld
+                            symbol: TS-BD-PGD
+                            connection: Boldor to Skellig
+                            connected_locations: TS-SK-PYS
+                            fare: 100
+                            duration: 15
+                          Tyldia:
+                            name: Port Falandra
+                            symbol: TS-BD-PFD
+                            connection: Boldor to Tyldia
+                            connected_locations: TS-TD-PTL
+                            fare: 150
+                            duration: 90
+                      TS-PR:
+                        name: Pria
+                        description: 'The starting region, a rural and under-developed area that largely escaped the ravages of war by being too small to notice.'
+                        ports:
+                          Veldis:
+                            name: Port Fulgrath
+                            symbol: TS-PR-PFG
+                            connection: Pria to Veldis
+                            connected_locations: TS-VD-PNN
+                            fare: 500
+                            duration: 30
+                      TS-SK:
+                        name: Skellig
+                        description: 'Though relatively large, Skellig is 90% marshy wetland thanks to a large freshwater spring and is nearly always overcast or rainy. Residents build structures on stilts and largely subsist by filling enchanted barrels of water for sale to drier islands, or working as Mongera for the Simeralian Banking Clan.'
+                        ports:
+                          Boldor:
+                            name: Port Ysili
+                            symbol: TS-SK-PYS
+                            connection: Skellig to Boldor
+                            connected_locations: TS-BD-PGD
+                            fare: 100
+                            duration: 15
+                          Veldis:
+                            name: Port Gumpti
+                            symbol: TS-SK-PGM
+                            connection: Skellig to Veldis
+                            connected_locations: TS-VD-PO
+                            fare: 100
+                            duration: 60
+                      TS-TD:
+                        name: Tyldia
+                        description: 'Tyldia is rather unique, as its land mass is entirely developed, forcing construction to grow vertically. Rather than individual settlements, the region is broken up into several Administrative Districts.'
+                        ports:
+                          Boldor:
+                            name: Port Tuolorme
+                            symbol: TS-TD-PTL
+                            connection: Tyldia to Boldor
+                            connected_locations: TS-BD-PFD
+                            fare: 150
+                            duration: 90
+                          Yoggoth:
+                            name: Port Denver
+                            symbol: TS-TD-PDV
+                            connection: Tyldia to Yoggoth
+                            connected_locations: TS-YG-PWD
+                            fare: 250
+                            duration: 150
+                      TS-TT:
+                        name: Tritum
+                        description: 'Known before The Fracturing as The Bastion of the West, Tritum''s population is divided into warrior and peasant castes. Peasants largely practice subsistence hunting and gathering in Tritum''s vast forests, while the warrior caste is contracted by the Merchant Syndicate of Tyldia to guard the traderoute from Veldis.'
+                        ports:
+                          Veldis:
+                            name: Port Hamstrid
+                            symbol: TS-TT-PHM
+                            connection: Tritum to Veldis
+                            connected_locations: TS-VD-PFG
+                            fare: 250
+                            duration: 90
+                          Yoggoth:
+                            name: Port Teleborgo
+                            symbol: TS-TT-PTB
+                            connection: Tritum to Yoggoth
+                            connected_locations: TS-YG-PHB
+                            fare: 350
+                            duration: 120
+                      TS-VD:
+                        name: Veldis
+                        description: 'Veldis used to be a relatively rural minor region, but after The Fracturing it became the primary supplier of food to Tyldia. The Merchant Syndicate purchased every plot of land on Veldis and hired mages to flatten hills, dig irrigation, and enchant the soil to ensure enough capacity to feed the city.'
+                        ports:
+                          Pria:
+                            name: Port Nayanahd
+                            symbol: TS-VD-PNN
+                            connection: Veldis to Pria
+                            connected_locations: TS-PR-PFG
+                            fare: 500
+                            duration: 30
+                          Skellig:
+                            name: Port Olisar
+                            symbol: TS-VD-PO
+                            connection: Veldis to Skellig
+                            connected_locations: TS-SK-PGM
+                            fare: 100
+                            duration: 60
+                          Tritum:
+                            name: Port Fulgrath
+                            symbol: TS-VD-PFG
+                            connection: Veldis to Tritum
+                            connected_locations: TS-TT-PHM
+                            fare: 250
+                            duration: 90
+                      TS-YG:
+                        name: Yoggoth
+                        description: An oft overlooked region due to the long travel times and desert biome as well as the large land-based distance between ports compared to Boldor. The leadership dictates a compulsory state religion following The Church of Ghel-Nytherog and won't welcome new settlers of other faiths.
+                        ports:
+                          Tritum:
+                            name: Port Hellsbrooke
+                            symbol: TS-YG-PHB
+                            connection: Yoggoth to Tritum
+                            connected_locations: TS-TT-PTB
+                            fare: 350
+                            duration: 120
+                          Tyldia:
+                            name: Port Waterdry
+                            symbol: TS-YG-PWD
+                            connection: Yoggoth to Tyldia
+                            connected_locations: TS-TD-PDV
+                            fare: 250
+                            duration: 150
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - map_key_island_symbol
+                    description: 'map[string]Island where key is island-symbol'
+                    properties:
+                      map_key_island_symbol:
+                        $ref: ../models/Island.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Islands
+      description: Get basic information on all islands
+  '/islands/{island-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: island-symbol
+        in: path
+        required: true
+        description: 'Location symbol of the island, e.g. TS-PR'
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      name: Pria
+                      description: 'The starting region, a rural and under-developed area that largely escaped the ravages of war by being too small to notice.'
+                      ports:
+                        Veldis:
+                          name: Port Fulgrath
+                          symbol: TS-PR-PFG
+                          connection: Pria to Veldis
+                          connected_locations: TS-VD-PNN
+                          fare: 500
+                          duration: 30
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Island.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Island
+      description: Get a specific island
 components:
   schemas: {}
   securitySchemes:
@@ -1499,6 +1712,7 @@ components:
 tags:
   - name: Assistants
   - name: Farms
+  - name: Locations
   - name: Markets
   - name: Plants
   - name: Plots

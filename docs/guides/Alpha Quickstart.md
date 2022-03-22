@@ -220,6 +220,10 @@ You can get general info on the world around you, but to get details you must ha
 
 `GET: /api/my/locations/{location-symbol}`
 
+### Ports
+
+...TODO...
+
 ## Farms Advanced
 
 Eventually players will be able to get multiple farms, each with different bonuses and unique buildings.

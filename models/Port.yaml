@@ -1,0 +1,39 @@
+description: Port entity
+type: object
+x-examples:
+  example-1:
+    name: Port Fulgrath
+    symbol: TS-PR-PFG
+    connection: Pria to Veldis
+    connected_locations: TS-VD-PNN
+    fare: 500
+    duration: 30
+properties:
+  name:
+    type: string
+    minLength: 1
+  symbol:
+    type: string
+    minLength: 1
+    description: The port's location-symbol
+  connection:
+    type: string
+    minLength: 1
+    description: The islands this port connects between
+  connected_locations:
+    type: string
+    minLength: 1
+    description: The location-symbol of the port it connects to
+  fare:
+    type: number
+    description: One-way cost to travel this route
+  duration:
+    type: number
+    description: 'Route travel time in seconds '
+required:
+  - name
+  - symbol
+  - connection
+  - connected_locations
+  - fare
+  - duration

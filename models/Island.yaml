@@ -1,0 +1,33 @@
+description: Island entity
+type: object
+x-examples:
+  example-1:
+    name: Pria
+    description: 'The starting region, a rural and under-developed area that largely escaped the ravages of war by being too small to notice.'
+    ports:
+      Veldis:
+        name: Port Fulgrath
+        symbol: TS-PR-PFG
+        connection: Pria to Veldis
+        connected_locations: TS-VD-PNN
+        fare: 500
+        duration: 30
+properties:
+  name:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  ports:
+    type: object
+    required:
+      - map_key_port_connection_island_name
+    description: 'map[string]Port where the key is the name of the Island the port connects to'
+    properties:
+      map_key_port_connection_island_name:
+        $ref: ./Port.yaml
+required:
+  - name
+  - description
+  - ports
