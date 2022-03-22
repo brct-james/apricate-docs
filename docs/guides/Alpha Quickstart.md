@@ -202,21 +202,70 @@ Each advanced section has a list of specific feedback I'm looking for, but don't
 
 ## Locations Advanced
 
+You can get general info on the world around you, but to get details you must have an assistant at the location or it must be a farm you own.
+
+`GET: /api/islands`
+
+`GET: /api/islands/{islandName}`
+
+`GET: /api/regions`
+
+`GET: /api/regions/{regionName}`
+
+`GET: /api/my/nearby-locations`
+
+`GET: /api/my/locations`
+
+`GET: /api/my/locations/{location-symbol}`
+
 ## Farms Advanced
+
+Eventually players will be able to get multiple farms, each with different bonuses and unique buildings.
+
+`GET: /api/my/farms`
+`GET: /api/my/farms/{location-symbol}`
 
 ## Markets Advanced
 
+I hope to have adaptive, fully-featured markets with `MARKET` `STOP` `LIMIT` and `STOPLIMIT` order types in the near future.
+
+### Feedback Questions
+
+- Are market orders easy to use?
+- How could they be improved?
+
 ## Assistants Advanced
+
+Assistants are the 'ships' of Apricate, and will cart materials to and from locations for you. They are also how you will interact with NPCs and complete quests. Finally, they provide vision for you in the Fog of War.
 
 ## Contracts Advanced
 
-to be converted to quests
+Contracts are given by NPCs throughout the world. To be converted to Quests
 
 ## Sizes Advanced
 
-feedback: get for this or no?
+Sizes are mapped between String and Integer as follows:
 
-should add a Slots int field that matches up with size for plots instead?
+```yaml
+Miniature: 1
+Tiny: 2
+Small: 4
+Modest: 8
+Average: 16
+Large: 32
+Huge: 64
+# --- The sizes below are not able to be grown at this time, in the future they will be used for Trophy class produce
+Gigantic: 256
+Colossal: 1024
+Titanic: 4096
+```
+
+### Feedback Questions
+
+- Should there be a `GET` endpoint with a map between String and Integer Size?
+- Should users be expected to review the documentation for this instead?
+- Is having multiple sizes of Produce worth the extra effort to accommodate their unique data structure?
+- Perhaps the middle ground: should I add a 'Slots' Integer field on plots that corresponds to the Integer Size of the plot?
 
 ## Warehouses Advanced
 
