@@ -15,9 +15,7 @@ properties:
   growth_stages:
     type: array
     items:
-      type: object
-      additionalProperties:
-        $ref: './Growth-Stage.yaml'
+      $ref: ./Growth-Stage.yaml
 required:
   - name
   - description

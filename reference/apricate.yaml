@@ -218,7 +218,7 @@ paths:
       description: 'Get user info, including non-public information'
   /plants:
     get:
-      summary: Your GET endpoint
+      summary: Get Plants
       tags: []
       responses:
         '200':
@@ -566,14 +566,30 @@ paths:
                     minLength: 1
                   data:
                     type: object
+                    description: 'map[string]Plant'
                     properties:
-                      string:
+                      map_key_plant_name:
                         $ref: ../models/Plant.yaml
                 required:
                   - code
                   - message
                   - data
-      operationId: get-plants
+      operationId: Get Plants
+      description: Get info on all plants
+  '/plants/{plant-name}':
+    parameters:
+      - schema:
+          type: string
+        name: plant-name
+        in: path
+        required: true
+    get:
+      summary: Get Specific Plant
+      tags:
+        - Plants
+      responses: {}
+      operationId: Get Specific Plant
+      description: Get a specified plant
 components:
   schemas: {}
   securitySchemes:
