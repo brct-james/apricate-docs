@@ -47,5 +47,3 @@ required:
   - ledger
   - user-since
   - achievements
-x-tags:
-  - Users

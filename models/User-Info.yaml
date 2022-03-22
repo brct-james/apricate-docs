@@ -88,5 +88,3 @@ required:
   - farms
   - plots
   - warehouses
-x-tags:
-  - Users

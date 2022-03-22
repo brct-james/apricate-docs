@@ -175,7 +175,7 @@ paths:
                     code: 1
                     message: '[Generic_Success] Request Successful'
                     data:
-                      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyZWVuaXR0aGUifQ.-bmWCrEZvUeIzRbjGHSLcdT2bF8Zzd6zXVNHOh4MbWc
+                      token: redacted-jwt
                       username: Greenitthe
                       title: Owner
                       ledger:
@@ -219,7 +219,8 @@ paths:
   /plants:
     get:
       summary: Get Plants
-      tags: []
+      tags:
+        - Plants
       responses:
         '200':
           description: OK
@@ -583,13 +584,230 @@ paths:
         name: plant-name
         in: path
         required: true
+        description: 'Name of plant, case insensitive, can replace spaces with underscores'
     get:
       summary: Get Specific Plant
       tags:
         - Plants
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      name: Spectral Grass
+                      description: 'Spectral Grass is the most basic plant you can grow, and is commonly used to create lightweight clothing ideal for travelling in most climates'
+                      growth_stages:
+                        - name: Seed
+                          description: 'Spectral Grass doesn''t require much care and will grow in almost any climate, simply wait for it to grow'
+                          action: Wait
+                          growth_time: 30
+                        - name: Young Plant
+                          description: Spectral Grass must be trimmed before harvesting
+                          action: Trim
+                          growth_time: 30
+                        - name: Adult Plant
+                          description: Spectral Grass must be harvested as an adult
+                          action: Reap
+                          harvestable:
+                            seeds:
+                              Spectral Grass Seeds: 1
+                            goods:
+                              Spectral Fiber: 1
+                            final_harvest: true
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Plant.yaml
+                required:
+                  - code
+                  - message
+                  - data
       operationId: Get Specific Plant
       description: Get a specified plant
+  '/plants/{plant-name}/stage/{stage-num}':
+    parameters:
+      - schema:
+          type: string
+        name: plant-name
+        in: path
+        required: true
+        description: 'Name of plant, case insensitive, can replace spaces with underscores'
+      - schema:
+          type: string
+        name: stage-num
+        in: path
+        required: true
+        description: Stage number to select
+    get:
+      summary: Get Specific Plant Growth Stage
+      tags:
+        - Plants
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      name: Adult Plant - Fertilize
+                      description: Wild Flora plants must be fertilized again for additional yield
+                      action: Fertilize
+                      consumable_options:
+                        - name: Fertilizer
+                          quantity: 2
+                        - name: Enchanted Fertilizer
+                          quantity: 2
+                        - name: Dragon Fertilizer
+                          quantity: 2
+                          added_yield: 0.25
+                        - name: Enchanted Dragon Fertilizer
+                          quantity: 2
+                          added_yield: 0.75
+                      added_yield: 0.25
+                      growth_time: 120
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Growth-Stage.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Plant Growth Stage
+      description: Get the growth stage of a particular plant
+  /warehouses:
+    get:
+      summary: Get My Warehouses
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - uuid: Greenitthe|Warehouse-TS-PR-HF
+                        location_symbol: TS-PR-HF
+                        tools:
+                          Drying Rack: 1
+                          Hoe: 1
+                          Knife: 1
+                          Pestle and Mortar: 1
+                          Pitchfork: 1
+                          Rake: 1
+                          Scroll of Hyperspecific Cloud Cover: 1
+                          Shears: 1
+                          Sickle: 1
+                          Spade: 1
+                          Sprouting Pot: 1
+                          Water Wand: 1
+                        produce:
+                          Potato|Tiny:
+                            name: Potato
+                            quantity: 1000
+                            size: Miniature
+                        seeds:
+                          Cabbage Seeds: 1000
+                          Gulb Bulb: 1000
+                          Potato Chunk: 1000
+                          Shelvis Fig Seeds: 1000
+                          Spectral Grass Seeds: 1000
+                          Spinosus Vas Seeds: 1000
+                        goods:
+                          Dragon Fertilizer: 1000
+                          Enchanted Dragon Fertilizer: 1000
+                          Enchanted Fertilizer: 1000
+                          Enchanted Water: 1000
+                          Fertilizer: 1000
+                          Water: 1000
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/Warehouse.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get My Warehouses
+      description: Get the info of all warehouses associated with my user
+  '/warehouses/{location-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: location-symbol
+        in: path
+        required: true
+        description: The warehouse's location symbol
+    get:
+      summary: Get Specific Warehouse
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data: {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Warehouse.yaml
+                required:
+                  - code
+                  - message
+                  - data
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: Get Specific Warehouse
+      description: Get info on a specific warehouse
 components:
   schemas: {}
   securitySchemes:

@@ -1,0 +1,68 @@
+description: 'The warehouse data, including items stored'
+type: object
+x-examples:
+  example-1:
+    uuid: Greenitthe|Warehouse-TS-PR-HF
+    location_symbol: TS-PR-HF
+    tools:
+      Drying Rack: 1
+      Hoe: 1
+      Knife: 1
+      Pestle and Mortar: 1
+      Pitchfork: 1
+      Rake: 1
+      Scroll of Hyperspecific Cloud Cover: 1
+      Shears: 1
+      Sickle: 1
+      Spade: 1
+      Sprouting Pot: 1
+      Water Wand: 1
+    produce:
+      Potato|Tiny:
+        name: Potato
+        quantity: 1000
+        size: Miniature
+    seeds:
+      Cabbage Seeds: 1000
+      Gulb Bulb: 1000
+      Potato Chunk: 1000
+      Shelvis Fig Seeds: 1000
+      Spectral Grass Seeds: 1000
+      Spinosus Vas Seeds: 1000
+    goods:
+      Dragon Fertilizer: 1000
+      Enchanted Dragon Fertilizer: 1000
+      Enchanted Fertilizer: 1000
+      Enchanted Water: 1000
+      Fertilizer: 1000
+      Water: 1000
+properties:
+  uuid:
+    type: string
+    minLength: 1
+  location_symbol:
+    type: string
+    minLength: 1
+  tools:
+    type: object
+    description: 'map[string]integer'
+  produce:
+    type: object
+    required:
+      - map_key_produce_name
+    properties:
+      map_key_produce_name:
+        $ref: ./Produce.yaml
+  seeds:
+    type: object
+    description: 'map[string]integer'
+  goods:
+    type: object
+    description: 'map[string]integer'
+required:
+  - uuid
+  - location_symbol
+  - tools
+  - produce
+  - seeds
+  - goods
