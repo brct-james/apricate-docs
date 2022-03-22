@@ -1073,6 +1073,414 @@ paths:
                 - item_name
                 - quantity
         description: Request body specifies the market order
+  /plots:
+    get:
+      summary: Get Plots
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      Greenitthe|Farm-TS-PR-HF|Plot-0:
+                        uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                        location_symbol: TS-PR-HF
+                        id: 0
+                        size: Average
+                        plant_quantity: 0
+                        growth_complete_timestamp: 0
+                        plant: null
+                      Greenitthe|Farm-TS-PR-HF|Plot-1:
+                        uuid: Greenitthe|Farm-TS-PR-HF|Plot-1
+                        location_symbol: TS-PR-HF
+                        id: 1
+                        size: Average
+                        plant_quantity: 0
+                        growth_complete_timestamp: 0
+                        plant: null
+                      Greenitthe|Farm-TS-PR-HF|Plot-2:
+                        uuid: Greenitthe|Farm-TS-PR-HF|Plot-2
+                        location_symbol: TS-PR-HF
+                        id: 2
+                        size: Modest
+                        plant_quantity: 0
+                        growth_complete_timestamp: 0
+                        plant: null
+                      Greenitthe|Farm-TS-PR-HF|Plot-3:
+                        uuid: Greenitthe|Farm-TS-PR-HF|Plot-3
+                        location_symbol: TS-PR-HF
+                        id: 3
+                        size: Modest
+                        plant_quantity: 0
+                        growth_complete_timestamp: 0
+                        plant: null
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    properties:
+                      map_key_plot_uuid:
+                        $ref: ../models/Plot.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Plots
+      description: Gets info on all plots associated with user
+  '/plots/{plot-id}':
+    parameters:
+      - schema:
+          type: string
+        name: plot-id
+        in: path
+        required: true
+        description: 'The plot id, e.g. TS-PR-HF!Plot-0'
+    get:
+      summary: Get Specific Plot
+      tags:
+        - Plots
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                      location_symbol: TS-PR-HF
+                      id: 0
+                      size: Average
+                      plant_quantity: 0
+                      growth_complete_timestamp: 0
+                      plant: null
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Plot.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Plot
+      description: Get info on specific plot
+  '/plots/{plot-id}/plant':
+    parameters:
+      - schema:
+          type: string
+        name: plot-id
+        in: path
+        required: true
+        description: 'The plot id, e.g. TS-PR-HF!Plot-0'
+    post:
+      summary: Plant Plot
+      operationId: Plant Plot
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      warehouse:
+                        uuid: Greenitthe|Warehouse-TS-PR-HF
+                        location_symbol: TS-PR-HF
+                        tools:
+                          Drying Rack: 1
+                          Hoe: 1
+                          Knife: 1
+                          Pestle and Mortar: 1
+                          Pitchfork: 1
+                          Rake: 1
+                          Scroll of Hyperspecific Cloud Cover: 1
+                          Shears: 1
+                          Sickle: 1
+                          Spade: 1
+                          Sprouting Pot: 1
+                          Water Wand: 1
+                        produce: {}
+                        seeds:
+                          Cabbage Seeds: 1000
+                          Gulb Bulb: 1000
+                          Potato Chunk: 1000
+                          Shelvis Fig Seeds: 1000
+                          Spectral Grass Seeds: 992
+                          Spinosus Vas Seeds: 1000
+                        goods:
+                          Dragon Fertilizer: 1000
+                          Enchanted Dragon Fertilizer: 1000
+                          Enchanted Fertilizer: 1000
+                          Enchanted Water: 1000
+                          Fertilizer: 1000
+                          Water: 1000
+                      plot:
+                        uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                        location_symbol: TS-PR-HF
+                        id: 0
+                        size: Average
+                        plant_quantity: 8
+                        growth_complete_timestamp: 1647916993
+                        plant:
+                          type: Spectral Grass
+                          size: Tiny
+                          current_stage: 0
+                          yield: 1
+                      next_stage:
+                        name: Seed
+                        description: 'Spectral Grass doesn''t require much care and will grow in almost any climate, simply wait for it to grow'
+                        action: Wait
+                        growth_time: 30
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - warehouse
+                      - plot
+                      - next_stage
+                    properties:
+                      warehouse:
+                        $ref: ../models/Warehouse.yaml
+                      plot:
+                        $ref: ../models/Plot.yaml
+                      next_stage:
+                        $ref: ../models/Growth-Stage.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      description: Attempt to plant specified plant in plot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                quantity:
+                  type: number
+                size:
+                  type: string
+                  minLength: 1
+              required:
+                - name
+                - quantity
+                - size
+              x-examples:
+                example-1:
+                  name: Spectral Grass Seeds
+                  quantity: 8
+                  size: Tiny
+        description: 'Define what plant to plant, as well as size and quantity'
+  '/plots/{plot-id}/clear':
+    parameters:
+      - schema:
+          type: string
+        name: plot-id
+        in: path
+        required: true
+        description: 'The plot id, e.g. TS-PR-HF!Plot-0'
+    put:
+      summary: Clear Plot
+      operationId: Clear Plot
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful | Successfully cleared plot: Greenitthe|Farm-TS-PR-HF|Plot-0'
+                    data:
+                      uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                      location_symbol: TS-PR-HF
+                      id: 0
+                      size: Average
+                      plant_quantity: 0
+                      growth_complete_timestamp: 1647917121
+                      plant: null
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Plot.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      description: Attempt to clear specified plot
+  '/plots/{plot-id}/interact':
+    parameters:
+      - schema:
+          type: string
+        name: plot-id
+        in: path
+        required: true
+        description: 'The plot id, e.g. TS-PR-HF!Plot-0'
+    patch:
+      summary: Interact with Plot
+      operationId: Interact with Plot
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      warehouse:
+                        uuid: Greenitthe|Warehouse-TS-PR-HF
+                        location_symbol: TS-PR-HF
+                        tools:
+                          Drying Rack: 1
+                          Hoe: 1
+                          Knife: 1
+                          Pestle and Mortar: 1
+                          Pitchfork: 1
+                          Rake: 1
+                          Scroll of Hyperspecific Cloud Cover: 1
+                          Shears: 1
+                          Sickle: 1
+                          Spade: 1
+                          Sprouting Pot: 1
+                          Water Wand: 1
+                        produce: {}
+                        seeds:
+                          Cabbage Seeds: 1000
+                          Gulb Bulb: 996
+                          Potato Chunk: 1000
+                          Shelvis Fig Seeds: 1000
+                          Spectral Grass Seeds: 984
+                          Spinosus Vas Seeds: 1000
+                        goods:
+                          Dragon Fertilizer: 1000
+                          Enchanted Dragon Fertilizer: 1000
+                          Enchanted Fertilizer: 1000
+                          Enchanted Water: 996
+                          Fertilizer: 1000
+                          Water: 1000
+                      plot:
+                        uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                        location_symbol: TS-PR-HF
+                        id: 0
+                        size: Average
+                        plant_quantity: 4
+                        growth_complete_timestamp: 1647917244
+                        plant:
+                          type: Gulb
+                          size: Miniature
+                          current_stage: 1
+                          yield: 1
+                      next_stage:
+                        name: Seedling
+                        description: Gulb seedlings may be fertilized for additional yield
+                        action: Fertilize
+                        optional: true
+                        action_to_skip: Skip
+                        consumable_options:
+                          - name: Fertilizer
+                            quantity: 1
+                            added_yield: 0.1
+                          - name: Enchanted Fertilizer
+                            quantity: 1
+                            added_yield: 0.25
+                          - name: Dragon Fertilizer
+                            quantity: 1
+                            added_yield: 0.25
+                          - name: Enchanted Dragon Fertilizer
+                            quantity: 1
+                            added_yield: 0.5
+                        growth_time: 60
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - warehouse
+                      - plot
+                      - next_stage
+                    properties:
+                      warehouse:
+                        $ref: ../models/Warehouse.yaml
+                      plot:
+                        $ref: ../models/Plot.yaml
+                      next_stage:
+                        $ref: ../models/Growth-Stage.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  action: Water
+                  consumable: enchanted water
+              properties:
+                action:
+                  type: string
+                  minLength: 1
+                consumable:
+                  type: string
+                  minLength: 1
+              required:
+                - action
+        description: Define action and select consumable if applicable
+      description: Attempt to interact with a plot to grow plant and/or harvest it
 components:
   schemas: {}
   securitySchemes:

@@ -1,0 +1,40 @@
+description: Plot entity
+type: object
+x-examples:
+  example-1:
+    uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+    location_symbol: TS-PR-HF
+    id: 0
+    size: Average
+    plant_quantity: 0
+    growth_complete_timestamp: 0
+    plant: null
+properties:
+  uuid:
+    type: string
+    minLength: 1
+  location_symbol:
+    type: string
+    minLength: 1
+  id:
+    type: number
+  size:
+    type: string
+    minLength: 1
+  plant_quantity:
+    type: number
+  growth_complete_timestamp:
+    type: number
+  plant:
+    oneOf:
+      - type: 'null'
+        properties: {}
+      - $ref: ./Plant.yaml
+required:
+  - uuid
+  - location_symbol
+  - id
+  - size
+  - plant_quantity
+  - growth_complete_timestamp
+  - plant
