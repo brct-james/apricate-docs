@@ -700,7 +700,8 @@ paths:
   /warehouses:
     get:
       summary: Get My Warehouses
-      tags: []
+      tags:
+        - Warehouses
       responses:
         '200':
           description: OK
@@ -776,7 +777,8 @@ paths:
         description: The warehouse's location symbol
     get:
       summary: Get Specific Warehouse
-      tags: []
+      tags:
+        - Warehouses
       responses:
         '200':
           description: OK
