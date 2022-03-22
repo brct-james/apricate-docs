@@ -18,7 +18,6 @@ paths:
       summary: Get Users
       tags:
         - Users
-        - Public
       operationId: Get Users
       description: 'Get lists of registered usernames with various filters: unique, active, etc.'
       responses:
@@ -77,7 +76,6 @@ paths:
     get:
       summary: Get Specific User's Public Info
       tags:
-        - Public
         - Users
       responses:
         '200':
@@ -104,7 +102,7 @@ paths:
         required: true
         description: Case-insensitive username
     post:
-      summary: ''
+      summary: Claim Username and Create User
       operationId: Create User
       responses:
         '200':
@@ -158,8 +156,424 @@ paths:
                   - data
       description: Attempt to create new user with the specified username
       tags:
-        - Public
         - Users
+  /my/user:
+    get:
+      summary: Secure Get User
+      tags:
+        - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdyZWVuaXR0aGUifQ.-bmWCrEZvUeIzRbjGHSLcdT2bF8Zzd6zXVNHOh4MbWc
+                      username: Greenitthe
+                      title: Owner
+                      ledger:
+                        currencies:
+                          Coins: 1000
+                        favor:
+                          Vince Kosuga: 50
+                        escrow: {}
+                      user-since: 1647909007
+                      achievements:
+                        - Owner
+                        - Contributor
+                        - Noob
+                      contracts:
+                        - Greenitthe|Contract-0
+                      assistants:
+                        - Greenitthe|Assistant-0
+                      farms:
+                        - Greenitthe|Farm-TS-PR-HF
+                      plots:
+                        - Greenitthe|Farm-TS-PR-HF|Plot-0
+                        - Greenitthe|Farm-TS-PR-HF|Plot-1
+                        - Greenitthe|Farm-TS-PR-HF|Plot-2
+                        - Greenitthe|Farm-TS-PR-HF|Plot-3
+                      warehouses:
+                        - Greenitthe|Warehouse-TS-PR-HF
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/User-Info.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Secure Get User
+      description: 'Get user info, including non-public information'
+  /plants:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      Cabbage:
+                        name: Cabbage
+                        description: 'The Cabbage is a mundane plant that grows above ground. It is relatively fast growing and easy to care for, not requiring any additional watering in most climates'
+                        growth_stages:
+                          - name: Seed
+                            description: 'You may fertilize cabbage as a seed to increase yields. Any fertilizer will do, cabbage doesn''t respond to higher quality fertilizers'
+                            action: Fertilize
+                            optional: true
+                            action_to_skip: Skip
+                            consumable_options:
+                              - name: Fertilizer
+                                quantity: 1
+                              - name: Enchanted Fertilizer
+                                quantity: 1
+                              - name: Dragon Fertilizer
+                                quantity: 1
+                              - name: Enchanted Dragon Fertilizer
+                                quantity: 1
+                            added_yield: 0.5
+                            growth_time: 30
+                          - name: Young Plant
+                            description: Cabbage must be weeded before harvest
+                            action: Weed
+                            growth_time: 60
+                          - name: Adult Plant
+                            description: Cabbage must be harvested
+                            action: Trim
+                            harvestable:
+                              produce:
+                                Cabbage: 1
+                              seeds:
+                                Cabbage Seeds: 1
+                              final_harvest: true
+                      Gulb:
+                        name: Gulb
+                        description: 'The Gulb plant grows from a Gulb Bulb, and may be harvested for Gulb Nuts'
+                        growth_stages:
+                          - name: Bulb
+                            description: Gulb Bulbs required enchanted water to sprout
+                            action: Water
+                            consumable_options:
+                              - name: Enchanted Water
+                                quantity: 1
+                            growth_time: 60
+                          - name: Seedling
+                            description: Gulb seedlings may be fertilized for additional yield
+                            action: Fertilize
+                            optional: true
+                            action_to_skip: Skip
+                            consumable_options:
+                              - name: Fertilizer
+                                quantity: 1
+                                added_yield: 0.1
+                              - name: Enchanted Fertilizer
+                                quantity: 1
+                                added_yield: 0.25
+                              - name: Dragon Fertilizer
+                                quantity: 1
+                                added_yield: 0.25
+                              - name: Enchanted Dragon Fertilizer
+                                quantity: 1
+                                added_yield: 0.5
+                            growth_time: 60
+                          - name: Young Plant
+                            description: Gulb plants may be hilled for additional yield
+                            action: Hill
+                            optional: true
+                            action_to_skip: Skip
+                            added_yield: 1
+                            growth_time: 600
+                          - name: Adolescent Plant
+                            description: Gulb plants must be weeded before harvest
+                            action: Weed
+                            growth_time: 180
+                          - name: Adult Plant - Harvest
+                            description: Gulb plants may be harvested early as adults or fertilized again for additional yield
+                            action: Dig
+                            optional: true
+                            action_to_skip: Skip
+                            harvestable:
+                              seeds:
+                                Gulb Bulb: 0.5
+                              goods:
+                                Gulb Nut: 0.75
+                              final_harvest: true
+                          - name: Adult Plant - Fertilize
+                            description: Wild Flora plants must be fertilized again for additional yield
+                            action: Fertilize
+                            consumable_options:
+                              - name: Fertilizer
+                                quantity: 2
+                              - name: Enchanted Fertilizer
+                                quantity: 2
+                              - name: Dragon Fertilizer
+                                quantity: 2
+                                added_yield: 0.25
+                              - name: Enchanted Dragon Fertilizer
+                                quantity: 2
+                                added_yield: 0.75
+                            added_yield: 0.25
+                            growth_time: 120
+                          - name: Mature Plant - Harvest
+                            description: Mature Wild Flora plants must be harvested
+                            action: Dig
+                            harvestable:
+                              seeds:
+                                Gulb Bulb: 1
+                              goods:
+                                Gulb Nut: 1
+                              final_harvest: true
+                      Potato:
+                        name: Potato
+                        description: The hardy Potato plant is a mundane plant that grows underground. It is an extremely common staple food that grows quickly and can be harvested multiple times. Rather than using seeds is planted as the Potatoes themselves
+                        growth_stages:
+                          - name: Seed
+                            description: Potatoes require water to sprout
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 1
+                              - name: Enchanted Water
+                                quantity: 1
+                                added_yield: 0.1
+                            growth_time: 30
+                          - name: Seedling
+                            description: Potatoes may be fertilized to increase yield
+                            action: Fertilize
+                            optional: true
+                            action_to_skip: Skip
+                            consumable_options:
+                              - name: Fertilizer
+                                quantity: 1
+                                added_yield: 0.5
+                              - name: Enchanted Fertilizer
+                                quantity: 1
+                                added_yield: 0.75
+                              - name: Dragon Fertilizer
+                                quantity: 1
+                                added_yield: 1.5
+                              - name: Enchanted Dragon Fertilizer
+                                quantity: 1
+                                added_yield: 3
+                            growth_time: 60
+                          - name: Young Plant
+                            description: Potatoes may be hilled to increase yield
+                            action: Hill
+                            optional: true
+                            action_to_skip: Skip
+                            added_yield: 1
+                            growth_time: 60
+                          - name: Adult Plant - 1st Harvest
+                            description: 'Potatoes must be harvested, and may be harvested again after a while'
+                            action: Dig
+                            growth_time: 120
+                            harvestable:
+                              produce:
+                                Potato: 1
+                          - name: Adult Plant - 2nd Harvest
+                            description: 'Potatoes must be harvested, and may be harvested one final time after a while'
+                            action: Dig
+                            growth_time: 120
+                            harvestable:
+                              produce:
+                                Potato: 1
+                          - name: Adult Plant - 3rd Harvest
+                            description: 'Potatoes must be harvested, and may be harvested one final time after a while'
+                            action: Dig
+                            harvestable:
+                              produce:
+                                Potato: 1
+                              final_harvest: true
+                      Shelvis Fig:
+                        name: Shelvis Fig
+                        description: 'The Shelvis Fig is a mundane plant with fruit that grows on a shrub above ground. It requires a lot of water to grow, grow with moderate speed, may be harvested twice, and as a specialty of Skellig, its seeds are not available for public sale'
+                        growth_stages:
+                          - name: Seed
+                            description: Shelvis Figs must be sprouted before transplanting to dirt
+                            action: Sprout
+                            consumable_options:
+                              - name: Water
+                                quantity: 10
+                              - name: Enchanted Water
+                                quantity: 10
+                                added_yield: 0.1
+                            growth_time: 60
+                          - name: Sprout - 1st Watering
+                            description: Shelvis Figs require copious amounts of water to grow into seedlings
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 10
+                              - name: Enchanted Water
+                                quantity: 10
+                                added_yield: 0.1
+                            growth_time: 120
+                          - name: Sprout - 2nd Watering
+                            description: Shelvis Figs require copious amounts of water to grow into seedlings
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 10
+                              - name: Enchanted Water
+                                quantity: 10
+                                added_yield: 0.1
+                            growth_time: 120
+                          - name: Seedling
+                            description: Shelvis Figs must be planted after sprouting
+                            action: Dig
+                            growth_time: 240
+                          - name: Young Plant - 1st Watering
+                            description: Shelvis Figs require continual watering to keep growing
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 15
+                              - name: Enchanted Water
+                                quantity: 15
+                                added_yield: 0.1
+                            growth_time: 240
+                          - name: Young Plant - 2nd Watering
+                            description: Shelvis Figs require continual watering to keep growing
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 15
+                              - name: Enchanted Water
+                                quantity: 15
+                                added_yield: 0.1
+                            growth_time: 240
+                          - name: Adolescent Plant
+                            description: Shelvis Figs may be trimmed before harvest to increase yield
+                            action: Trim
+                            optional: true
+                            action_to_skip: Skip
+                            added_yield: 0.5
+                            growth_time: 240
+                          - name: Adult Plant - 1st Harvest
+                            description: 'Shelvis Figs must be harvested as adults, but don''t give seeds yet, and will require additional water to provide fruit another time'
+                            action: Trim
+                            growth_time: 30
+                            harvestable:
+                              produce:
+                                Shelvis Fig: 0.75
+                          - name: Adult Plant - Water
+                            description: Shelvis Figs require additional water to provide fruit another time
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 40
+                              - name: Enchanted Water
+                                quantity: 40
+                                added_yield: 0.25
+                            growth_time: 360
+                          - name: Adult Plant - 2nd Harvest
+                            description: 'Shelvis Figs must be harvested a 2nd time, including gathering seeds'
+                            action: Trim
+                            harvestable:
+                              produce:
+                                Shelvis Fig: 1
+                              seeds:
+                                Shelvis Fig Seeds: 1
+                              final_harvest: true
+                      Spectral Grass:
+                        name: Spectral Grass
+                        description: 'Spectral Grass is the most basic plant you can grow, and is commonly used to create lightweight clothing ideal for travelling in most climates'
+                        growth_stages:
+                          - name: Seed
+                            description: 'Spectral Grass doesn''t require much care and will grow in almost any climate, simply wait for it to grow'
+                            action: Wait
+                            growth_time: 30
+                          - name: Young Plant
+                            description: Spectral Grass must be trimmed before harvesting
+                            action: Trim
+                            growth_time: 30
+                          - name: Adult Plant
+                            description: Spectral Grass must be harvested as an adult
+                            action: Reap
+                            harvestable:
+                              seeds:
+                                Spectral Grass Seeds: 1
+                              goods:
+                                Spectral Fiber: 1
+                              final_harvest: true
+                      Spinosus Vas:
+                        name: Spinosus Vas
+                        description: 'The Spinosus Vas is a bulbous plant with sharp spikes protruding at all angles. It is able to draw water from the air itself, allowing it to accumulate large amounts of water in its body even in arid climates'
+                        growth_stages:
+                          - name: Seed
+                            description: The Spinosus Vas requires a bit of water to kickstart the growth process
+                            action: Water
+                            consumable_options:
+                              - name: Water
+                                quantity: 5
+                              - name: Enchanted Water
+                                quantity: 5
+                                added_yield: 0.25
+                            growth_time: 30
+                          - name: Young Plant - Shade
+                            description: The Spinosus Vas may be shaded while it grows to improve yield
+                            action: Shade
+                            optional: true
+                            action_to_skip: Skip
+                            added_yield: 1
+                            growth_time: 45
+                          - name: Young Plant - Weed
+                            description: The Spinosus Vas may be weeded to improve yield
+                            action: Weed
+                            optional: true
+                            action_to_skip: Skip
+                            added_yield: 0.25
+                            growth_time: 15
+                          - name: Young Plant - Grow
+                            description: The Spinosus Vas takes a while to grow and absorb water
+                            action: Wait
+                            growth_time: 30
+                          - name: Adult Plant
+                            description: 'Spectral Grass must be harvested as an adult, though rarely provides seeds'
+                            action: Dig
+                            harvestable:
+                              seeds:
+                                Spinosus Vas Seeds: 0.01
+                              goods:
+                                Enchanted Water: 0.1
+                                Water: 10
+                              final_harvest: true
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    properties:
+                      string:
+                        $ref: ../models/Plant.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: get-plants
 components:
   schemas: {}
   securitySchemes:
@@ -169,6 +583,12 @@ components:
       description: When you register a new user you will be granted a private bearer token which grants authorization to use the API.
   responses: {}
 tags:
-  - name: Public
+  - name: Assistants
+  - name: Farms
+  - name: Markets
+  - name: Plants
+  - name: Plots
+  - name: Quests
   - name: Users
+  - name: Warehouses
   - name: World

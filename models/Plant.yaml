@@ -1,0 +1,24 @@
+description: A plant
+type: object
+x-examples:
+  example-1:
+    name: Cabbage
+    description: 'The Cabbage is a mundane plant that grows above ground. It is relatively fast growing and easy to care for, not requiring any additional watering in most climates'
+    growth_stages: []
+properties:
+  name:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  growth_stages:
+    type: array
+    items:
+      type: object
+      additionalProperties:
+        $ref: './Growth-Stage.yaml'
+required:
+  - name
+  - description
+  - growth_stages

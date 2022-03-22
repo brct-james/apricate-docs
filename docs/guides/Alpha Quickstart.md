@@ -42,6 +42,8 @@ Each advanced section has a list of specific feedback I'm looking for, but don't
 
 - Check the warehouse on your starting farm to see what seeds and other materials you have to start with using the secure endpoint: `GET: /api/my/warehouses/TS-PR-HF`
 
+- - Any endpoint under the `/api/my` route is secure, and requires authentication
+
 - Take a moment to observe the structure of the warehouse entity.
 
 - - There are 4 categories, Tools, Goods, Seeds, and Produce.

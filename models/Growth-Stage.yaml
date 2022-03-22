@@ -1,0 +1,72 @@
+description: A plant's growth stage
+type: object
+x-examples:
+  example-1:
+    name: Seed
+    description: 'You may fertilize cabbage as a seed to increase yields. Any fertilizer will do, cabbage doesn''t respond to higher quality fertilizers'
+    action: Fertilize
+    optional: true
+    action_to_skip: Skip
+    consumable_options:
+      - name: Fertilizer
+        quantity: 1
+      - name: Enchanted Fertilizer
+        quantity: 1
+      - name: Dragon Fertilizer
+        quantity: 1
+      - name: Enchanted Dragon Fertilizer
+        quantity: 1
+    added_yield: 0.5
+    growth_time: 30
+properties:
+  name:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  action:
+    type: string
+    minLength: 1
+  optional:
+    type: boolean
+  action_to_skip:
+    type: string
+    minLength: 1
+  consumable_options:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        quantity:
+          type: number
+      required:
+        - name
+        - quantity
+  added_yield:
+    type: number
+  growth_time:
+    type: number
+  harvestable:
+    type: object
+    properties:
+      produce:
+        type: object
+        description: 'map[string]int'
+      seeds:
+        type: object
+        description: 'map[string]int'
+      goods:
+        type: object
+        description: 'map[string]int'
+      final_harvest:
+        type: boolean
+required:
+  - name
+  - description
+  - action
