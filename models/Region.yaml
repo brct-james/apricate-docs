@@ -1,0 +1,57 @@
+description: Region entity
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+  symbol:
+    type: string
+    minLength: 1
+  region_group:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  islands:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    items:
+      required:
+        - name
+        - symbol
+      properties:
+        name:
+          type: string
+          minLength: 1
+        symbol:
+          type: string
+          minLength: 1
+required:
+  - name
+  - symbol
+  - region_group
+  - description
+  - islands
+x-examples:
+  example-1:
+    name: Tyldian Spur
+    symbol: TS
+    region_group: Northern Extremities
+    description: 'The starting region, a small leg separated from the Central Wheel region-group by Tyldia'
+    islands:
+      - name: Pria
+        symbol: TS-PR
+      - name: Veldis
+        symbol: TS-VD
+      - name: Skellig
+        symbol: TS-SK
+      - name: Tritum
+        symbol: TS-TT
+      - name: Boldor
+        symbol: TS-BD
+      - name: Yoggoth
+        symbol: TS-YG
+      - name: Tyldia
+        symbol: TS-TD
