@@ -62,7 +62,7 @@ Each advanced section has a list of specific feedback I'm looking for, but don't
 
 - - - You should also have 16 Spectral Grass Seeds, 8 Cabbage Seeds, and 4 Potato Chunks.
 
-- Let's check the plant dictionary to see what the growth requirements are for these seeds: `GET: /api/plants/spectral_grass`
+- Let's check the plant dictionary to see what the growth requirements are for these seeds: `GET: /api/plants/spectral_grass` (note: "Spectral Grass", "spEcTRal_gRAss" are also valid)
 
 - - The most important part of the plant dictionary entry here is the `growth_stages` array.
 
@@ -269,33 +269,64 @@ Titanic: 4096
 
 ## Warehouses Advanced
 
-(note: for feedback, would it be more user friendly to simply use the summary format i.e. 'Potato|Tiny' in a string:int map rather than using an object/struct here?)
+Warehouses are automatically created as needed for every user at every location in the game, whenever an item is first added to a location.
+
+### Feedback Questions
+
+- Would it be more user friendly to simply use the summary format i.e. 'Potato|Tiny' in a string:int map rather than using an object/struct for produce? This would bring it in line with the other warehouse fields, at the cost of some user-side parsing and more keys in the map.
 
 ## Plots and Plants Advanced
 
-note for feedback: TS-PR-HS!Plot-0
+Actions are case-insensitive but space-sensitive
 
-- - The `size` field is Average, which maps to 16. Larger plots hold more plants, or a smaller number of larger plants (see Plots and Plants Advanced)
+See Sizes Advanced section for map between String and Integer sizes.
 
-should add a Slots int field that matches up with size for plots?
+### Plot and Plant Size
 
-feedback: too much data in response to plant, interact? should response include a cooldown_duration field with seconds integer (growth_complete_timestamp already included on plot object)
+...TODO...
 
-note: consumable options and size
+### Consumable Options
 
-note: actions are case insensitive but space sensitive
+...TODO...
+
+### Feedback Questions
+
+- Duplicate from Sizes questions: should I add a 'Slots' Integer field on plots that corresponds to the Integer Size of the plot?
+- Is there too much date in the response when interacting/planting? I could simply send the new quantity of the consumable/seed rather than the whole warehouse, for example. Would that be an improvement?
+- Should plot responses include a cooldown_duration field with a seconds Integer? Note: growth_complete_timestamp is already included on the plot object. Would this be a meaningful improvement or more clutter in the response?
+- The plot-id (e.g. TS-PR-HS!Plot-0) is not my favorite, but "!" is one of the few symbols that doesn't need to be encoded, otherwise "|" would be my go-to. Any thoughts on improving this selector?
 
 ## Growth Stages Advanced
 
-Placeholder: Read below in the Growth Stages Advanced section for more info on Growth Stages including Optional Stages, Early Harvests, and Multi Harvests
+Growth Stages are the building blocks of plant growth. They are one of the deeper parts of the game, so will be reviewed extensively below.
 
-(note: 'Spectral Grass' would also be valid - case insensitive, may replace spaces with underscores)
+### Growth Actions Advanced
 
-Feedback Requested on this section:
+...TODO...
+
+### Consumable Options
+
+...TODO...
+
+### Optional Stages
+
+...TODO...
+
+### Early Harvests
+
+...TODO...
+
+### Multi Harvests
+
+...TODO...
+
+### Feedback Questions
+
 - Should the growth_stages ordered array remain an array, or will this cause problems and should be converted to a map with integer keys to guarantee order
-- Should there be a tools or actions endpoint with a map from Action Name to Tool Name, or is it fun to try and figure out the association yourself
-- Should ActionToSkip be removed and just use Optional or maybe Skippable bool to indicate?
 
+- Should there be a tools or actions endpoint with a map from Action Name to Tool Name, or is it fun to try and figure out the association yourself
+
+- Should ActionToSkip be removed and just use Optional or maybe Skippable bool to indicate? 
 ## Terminology
 
 The game should follow a consistent terminology. Please report in discord if the documentation or an endpoint uses inconsistent or contradictory terminology.
