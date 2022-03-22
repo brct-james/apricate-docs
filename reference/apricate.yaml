@@ -697,7 +697,7 @@ paths:
                   - data
       operationId: Get Specific Plant Growth Stage
       description: Get the growth stage of a particular plant
-  /warehouses:
+  /my/warehouses:
     get:
       summary: Get My Warehouses
       tags:
@@ -767,7 +767,8 @@ paths:
                   - data
       operationId: Get My Warehouses
       description: Get the info of all warehouses associated with my user
-  '/warehouses/{location-symbol}':
+    parameters: []
+  '/my/warehouses/{location-symbol}':
     parameters:
       - schema:
           type: string
@@ -810,7 +811,7 @@ paths:
                 properties: {}
       operationId: Get Specific Warehouse
       description: Get info on a specific warehouse
-  /markets:
+  /my/markets:
     get:
       summary: Get Markets
       tags:
@@ -894,7 +895,8 @@ paths:
                   - data
       operationId: Get Markets
       description: Get info on all markets visible to the user
-  '/markets/{location-symbol}':
+    parameters: []
+  '/my/markets/{location-symbol}':
     parameters:
       - schema:
           type: string
@@ -933,7 +935,7 @@ paths:
                   - data
       operationId: Get Specific Market
       description: Get data on a specific market
-  '/markets/{location-symbol}/order':
+  '/my/markets/{location-symbol}/order':
     parameters:
       - schema:
           type: string
@@ -1073,7 +1075,7 @@ paths:
                 - item_name
                 - quantity
         description: Request body specifies the market order
-  /plots:
+  /my/plots:
     get:
       summary: Get Plots
       tags:
@@ -1140,7 +1142,8 @@ paths:
                   - data
       operationId: Get Plots
       description: Gets info on all plots associated with user
-  '/plots/{plot-id}':
+    parameters: []
+  '/my/plots/{plot-id}':
     parameters:
       - schema:
           type: string
@@ -1186,7 +1189,7 @@ paths:
                   - data
       operationId: Get Specific Plot
       description: Get info on specific plot
-  '/plots/{plot-id}/plant':
+  '/my/plots/{plot-id}/plant':
     parameters:
       - schema:
           type: string
@@ -1309,7 +1312,7 @@ paths:
         description: 'Define what plant to plant, as well as size and quantity'
       tags:
         - Plots
-  '/plots/{plot-id}/clear':
+  '/my/plots/{plot-id}/clear':
     parameters:
       - schema:
           type: string
@@ -1355,7 +1358,7 @@ paths:
       description: Attempt to clear specified plot
       tags:
         - Plots
-  '/plots/{plot-id}/interact':
+  '/my/plots/{plot-id}/interact':
     parameters:
       - schema:
           type: string
