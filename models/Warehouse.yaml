@@ -66,3 +66,14 @@ required:
   - produce
   - seeds
   - goods
+examples:
+  - uuid: string
+    location_symbol: string
+    tools: {}
+    produce:
+      map_key_produce_name:
+        name: string
+        quantity: 0
+        size: string
+    seeds: {}
+    goods: {}

@@ -38,3 +38,11 @@ required:
   - plant_quantity
   - growth_complete_timestamp
   - plant
+examples:
+  - uuid: string
+    location_symbol: string
+    id: 0
+    size: string
+    plant_quantity: 0
+    growth_complete_timestamp: 0
+    plant: null

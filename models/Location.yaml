@@ -39,3 +39,12 @@ required:
   - 'y'
   - description
   - npcs
+examples:
+  - name: string
+    symbol: string
+    region_name: string
+    x: 0
+    'y': 0
+    description: string
+    npcs:
+      - string

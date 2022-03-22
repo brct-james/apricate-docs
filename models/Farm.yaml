@@ -1,0 +1,96 @@
+description: Farm entity
+type: object
+x-examples:
+  example-1:
+    uuid: Greenitthe|Farm-TS-PR-HF
+    location_symbol: TS-PR-HF
+    bonuses: []
+    buildings:
+      Field: 1
+      Home: 1
+    plots:
+      Greenitthe|Farm-TS-PR-HF|Plot-0:
+        uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+        location_symbol: TS-PR-HF
+        id: 0
+        size: Average
+        plant_quantity: 16
+        growth_complete_timestamp: 1647973101
+        plant:
+          type: Spectral Grass
+          size: Miniature
+          current_stage: 0
+          yield: 1
+      Greenitthe|Farm-TS-PR-HF|Plot-1:
+        uuid: Greenitthe|Farm-TS-PR-HF|Plot-1
+        location_symbol: TS-PR-HF
+        id: 1
+        size: Average
+        plant_quantity: 0
+        growth_complete_timestamp: 0
+        plant: null
+      Greenitthe|Farm-TS-PR-HF|Plot-2:
+        uuid: Greenitthe|Farm-TS-PR-HF|Plot-2
+        location_symbol: TS-PR-HF
+        id: 2
+        size: Modest
+        plant_quantity: 0
+        growth_complete_timestamp: 0
+        plant: null
+      Greenitthe|Farm-TS-PR-HF|Plot-3:
+        uuid: Greenitthe|Farm-TS-PR-HF|Plot-3
+        location_symbol: TS-PR-HF
+        id: 3
+        size: Modest
+        plant_quantity: 0
+        growth_complete_timestamp: 0
+        plant: null
+properties:
+  uuid:
+    type: string
+    minLength: 1
+  location_symbol:
+    type: string
+    minLength: 1
+  bonuses:
+    type: array
+    items:
+      type: string
+  buildings:
+    type: object
+    required:
+      - map_key_building_name
+    description: 'map[String]Integer where key is building name and value is building level'
+    properties:
+      map_key_building_name:
+        type: number
+  plots:
+    type: object
+    required:
+      - map_key_plot_UUID
+    description: 'map[string]Plot where key is plot uuid'
+    properties:
+      map_key_plot_UUID:
+        $ref: ./Plot.yaml
+required:
+  - uuid
+  - location_symbol
+  - bonuses
+  - buildings
+  - plots
+examples:
+  - uuid: string
+    location_symbol: string
+    bonuses:
+      - string
+    buildings:
+      map_key_building_name: 0
+    plots:
+      map_key_plot_UUID:
+        uuid: string
+        location_symbol: string
+        id: 0
+        size: string
+        plant_quantity: 0
+        growth_complete_timestamp: 0
+        plant: null

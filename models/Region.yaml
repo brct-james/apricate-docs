@@ -55,3 +55,11 @@ x-examples:
         symbol: TS-YG
       - name: Tyldia
         symbol: TS-TD
+examples:
+  - name: string
+    symbol: string
+    region_group: string
+    description: string
+    islands:
+      - name: string
+        symbol: string

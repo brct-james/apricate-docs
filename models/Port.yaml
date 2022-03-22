@@ -37,3 +37,10 @@ required:
   - connected_locations
   - fare
   - duration
+examples:
+  - name: string
+    symbol: string
+    connection: string
+    connected_locations: string
+    fare: 0
+    duration: 0

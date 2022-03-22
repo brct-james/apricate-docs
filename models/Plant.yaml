@@ -20,3 +20,22 @@ required:
   - name
   - description
   - growth_stages
+examples:
+  - name: string
+    description: string
+    growth_stages:
+      - name: string
+        description: string
+        action: string
+        optional: true
+        action_to_skip: string
+        consumable_options:
+          - name: string
+            quantity: 0
+        added_yield: 0
+        growth_time: 0
+        harvestable:
+          produce: {}
+          seeds: {}
+          goods: {}
+          final_harvest: true

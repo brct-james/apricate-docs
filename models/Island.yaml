@@ -31,3 +31,14 @@ required:
   - name
   - description
   - ports
+examples:
+  - name: string
+    description: string
+    ports:
+      map_key_port_connection_island_name:
+        name: string
+        symbol: string
+        connection: string
+        connected_locations: string
+        fare: 0
+        duration: 0

@@ -2075,6 +2075,452 @@ paths:
                   - data
       operationId: Get My Nearby Locations
       description: 'Get a map of all islands that are visible through the Fog of War (owned farms and locations with an Assistant present), with sub-maps containing the location-symbols and names of the locations on those islands. Useful for discovering new locations when traveling to an island for the first time'
+  /my/assistants:
+    get:
+      summary: Get Assistants
+      tags:
+        - Assistants
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - uuid: Greenitthe|Assistant-0
+                        id: 0
+                        archetype: Hireling
+                        improvements: {}
+                        location_symbol: TS-PR-HF
+                        route: ''
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/Assistant.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Assistants
+      description: Get data on all assistants associated with the user
+  '/my/assistants/{assistant-id}':
+    parameters:
+      - schema:
+          type: string
+        name: assistant-id
+        in: path
+        required: true
+        description: 'For an assistant with UUID "Greenitthe|Assistant-0", the ID is just "0"'
+    get:
+      summary: Get Specific Assistant
+      tags:
+        - Assistants
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      uuid: Greenitthe|Assistant-0
+                      id: 0
+                      archetype: Hireling
+                      improvements: {}
+                      location_symbol: TS-PR-HF
+                      route: ''
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Assistant.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Assistant
+      description: Get info on a specific assistant
+  /my/farms:
+    get:
+      summary: Get Farms
+      tags:
+        - Farms
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - uuid: Greenitthe|Farm-TS-PR-HF
+                        location_symbol: TS-PR-HF
+                        bonuses: []
+                        buildings:
+                          Field: 1
+                          Home: 1
+                        plots:
+                          Greenitthe|Farm-TS-PR-HF|Plot-0:
+                            uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                            location_symbol: TS-PR-HF
+                            id: 0
+                            size: Average
+                            plant_quantity: 16
+                            growth_complete_timestamp: 1647973101
+                            plant:
+                              type: Spectral Grass
+                              size: Miniature
+                              current_stage: 0
+                              yield: 1
+                          Greenitthe|Farm-TS-PR-HF|Plot-1:
+                            uuid: Greenitthe|Farm-TS-PR-HF|Plot-1
+                            location_symbol: TS-PR-HF
+                            id: 1
+                            size: Average
+                            plant_quantity: 0
+                            growth_complete_timestamp: 0
+                            plant: null
+                          Greenitthe|Farm-TS-PR-HF|Plot-2:
+                            uuid: Greenitthe|Farm-TS-PR-HF|Plot-2
+                            location_symbol: TS-PR-HF
+                            id: 2
+                            size: Modest
+                            plant_quantity: 0
+                            growth_complete_timestamp: 0
+                            plant: null
+                          Greenitthe|Farm-TS-PR-HF|Plot-3:
+                            uuid: Greenitthe|Farm-TS-PR-HF|Plot-3
+                            location_symbol: TS-PR-HF
+                            id: 3
+                            size: Modest
+                            plant_quantity: 0
+                            growth_complete_timestamp: 0
+                            plant: null
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/Farm.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Farms
+      description: Get data on all farms owned by the user
+  '/my/farms/{location-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: location-symbol
+        in: path
+        required: true
+        description: Farm's location symbol e.g. TS-PR-HF
+    get:
+      summary: Get Specific Farm
+      tags:
+        - Farms
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      uuid: Greenitthe|Farm-TS-PR-HF
+                      location_symbol: TS-PR-HF
+                      bonuses: []
+                      buildings:
+                        Field: 1
+                        Home: 1
+                      plots:
+                        Greenitthe|Farm-TS-PR-HF|Plot-0:
+                          uuid: Greenitthe|Farm-TS-PR-HF|Plot-0
+                          location_symbol: TS-PR-HF
+                          id: 0
+                          size: Average
+                          plant_quantity: 16
+                          growth_complete_timestamp: 1647973101
+                          plant:
+                            type: Spectral Grass
+                            size: Miniature
+                            current_stage: 0
+                            yield: 1
+                        Greenitthe|Farm-TS-PR-HF|Plot-1:
+                          uuid: Greenitthe|Farm-TS-PR-HF|Plot-1
+                          location_symbol: TS-PR-HF
+                          id: 1
+                          size: Average
+                          plant_quantity: 0
+                          growth_complete_timestamp: 0
+                          plant: null
+                        Greenitthe|Farm-TS-PR-HF|Plot-2:
+                          uuid: Greenitthe|Farm-TS-PR-HF|Plot-2
+                          location_symbol: TS-PR-HF
+                          id: 2
+                          size: Modest
+                          plant_quantity: 0
+                          growth_complete_timestamp: 0
+                          plant: null
+                        Greenitthe|Farm-TS-PR-HF|Plot-3:
+                          uuid: Greenitthe|Farm-TS-PR-HF|Plot-3
+                          location_symbol: TS-PR-HF
+                          id: 3
+                          size: Modest
+                          plant_quantity: 0
+                          growth_complete_timestamp: 0
+                          plant: null
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Farm.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Farm
+      description: Get data on a specific farm
+  /my/contracts:
+    get:
+      summary: Get My Contracts
+      tags:
+        - Quests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - uuid
+                        - id
+                        - type
+                        - location_symbol
+                        - NPC
+                      properties:
+                        uuid:
+                          type: string
+                          minLength: 1
+                        id:
+                          type: number
+                        type:
+                          type: string
+                          minLength: 1
+                        location_symbol:
+                          type: string
+                          minLength: 1
+                        NPC:
+                          type: string
+                          minLength: 1
+                        terms:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            required:
+                              - npc
+                            properties:
+                              npc:
+                                type: string
+                                minLength: 1
+                        reward:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            required:
+                              - type
+                              - item
+                              - quantity
+                            properties:
+                              type:
+                                type: string
+                                minLength: 1
+                              item:
+                                type: string
+                                minLength: 1
+                              quantity:
+                                type: number
+                required:
+                  - code
+                  - message
+                  - data
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - uuid: Greenitthe|Contract-0
+                        id: 0
+                        type: Talk
+                        location_symbol: TS-PR-HF
+                        NPC: Viridis
+                        terms:
+                          - npc: Reldor
+                        reward:
+                          - type: Currency
+                            item: Coins
+                            quantity: 100
+      operationId: Get My Contracts
+      description: Get information on all contracts associated with user
+  '/my/contracts/{contract-id}':
+    parameters:
+      - schema:
+          type: string
+        name: contract-id
+        in: path
+        required: true
+        description: 'For an assistant with UUID "Greenitthe|Contract-0", the ID is just "0"'
+    get:
+      summary: Get Specific Contract
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    properties:
+                      uuid:
+                        type: string
+                        minLength: 1
+                      id:
+                        type: number
+                      type:
+                        type: string
+                        minLength: 1
+                      location_symbol:
+                        type: string
+                        minLength: 1
+                      NPC:
+                        type: string
+                        minLength: 1
+                      terms:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - npc
+                          properties:
+                            npc:
+                              type: string
+                              minLength: 1
+                      reward:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - type
+                            - item
+                            - quantity
+                          properties:
+                            type:
+                              type: string
+                              minLength: 1
+                            item:
+                              type: string
+                              minLength: 1
+                            quantity:
+                              type: number
+                    required:
+                      - uuid
+                      - id
+                      - type
+                      - location_symbol
+                      - NPC
+                      - terms
+                      - reward
+                required:
+                  - code
+                  - message
+                  - data
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      uuid: Greenitthe|Contract-0
+                      id: 0
+                      type: Talk
+                      location_symbol: TS-PR-HF
+                      NPC: Viridis
+                      terms:
+                        - npc: Reldor
+                      reward:
+                        - type: Currency
+                          item: Coins
+                          quantity: 100
+      operationId: Get Specific Contract
+      tags:
+        - Quests
+      description: Get data on a specific contract
 components:
   schemas: {}
   securitySchemes:

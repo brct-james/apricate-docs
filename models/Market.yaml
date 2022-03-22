@@ -92,3 +92,16 @@ required:
   - location_symbol
   - imports
   - exports
+examples:
+  - name: string
+    location_symbol: string
+    imports:
+      produce: {}
+      seeds: {}
+      goods: {}
+      tools: {}
+    exports:
+      produce: {}
+      seeds: {}
+      goods: {}
+      tools: {}

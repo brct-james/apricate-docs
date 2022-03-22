@@ -47,3 +47,13 @@ required:
   - ledger
   - user-since
   - achievements
+examples:
+  - username: string
+    title: string
+    ledger:
+      currencies: {}
+      favor: {}
+      escrow: {}
+    user-since: 0
+    achievements:
+      - string

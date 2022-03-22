@@ -88,3 +88,24 @@ required:
   - farms
   - plots
   - warehouses
+examples:
+  - token: string
+    username: string
+    title: string
+    ledger:
+      currencies: {}
+      favor: {}
+      escrow: {}
+    user-since: 0
+    achievements:
+      - string
+    contracts:
+      - string
+    assistants:
+      - string
+    farms:
+      - string
+    plots:
+      - string
+    warehouses:
+      - string

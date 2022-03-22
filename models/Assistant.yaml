@@ -1,0 +1,41 @@
+description: Assistant entity
+type: object
+x-examples:
+  example-1:
+    uuid: Greenitthe|Assistant-0
+    id: 0
+    archetype: Hireling
+    improvements: {}
+    location_symbol: TS-PR-HF
+    route: ''
+properties:
+  uuid:
+    type: string
+    minLength: 1
+  id:
+    type: number
+    description: Assistant-id
+  archetype:
+    type: string
+    minLength: 1
+  improvements:
+    type: object
+  location_symbol:
+    type: string
+    minLength: 1
+  route:
+    type: string
+required:
+  - uuid
+  - id
+  - archetype
+  - improvements
+  - location_symbol
+  - route
+examples:
+  - uuid: string
+    id: 0
+    archetype: string
+    improvements: {}
+    location_symbol: string
+    route: string
