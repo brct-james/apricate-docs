@@ -65,6 +65,7 @@ paths:
                   - code
                   - message
                   - data
+      security: []
   '/users/{username}':
     parameters:
       - schema:
@@ -93,6 +94,7 @@ paths:
                     $ref: ../models/Public-User-Info.yaml
       operationId: Get Specific User
       description: Gets the public info of a specified user
+      security: []
   '/users/{username}/claim':
     parameters:
       - schema:
@@ -157,6 +159,7 @@ paths:
       description: Attempt to create new user with the specified username
       tags:
         - Users
+      security: []
   /my/user:
     get:
       summary: Secure Get User
@@ -577,6 +580,7 @@ paths:
                   - data
       operationId: Get Plants
       description: Get info on all plants
+      security: []
   '/plants/{plant-name}':
     parameters:
       - schema:
@@ -636,6 +640,7 @@ paths:
                   - data
       operationId: Get Specific Plant
       description: Get a specified plant
+      security: []
   '/plants/{plant-name}/stage/{stage-num}':
     parameters:
       - schema:
@@ -697,6 +702,7 @@ paths:
                   - data
       operationId: Get Specific Plant Growth Stage
       description: Get the growth stage of a particular plant
+      security: []
   /my/warehouses:
     get:
       summary: Get My Warehouses
@@ -1655,6 +1661,7 @@ paths:
                   - data
       operationId: Get Islands
       description: Get basic information on all islands
+      security: []
   '/islands/{island-symbol}':
     parameters:
       - schema:
@@ -1704,6 +1711,7 @@ paths:
                   - data
       operationId: Get Specific Island
       description: Get a specific island
+      security: []
   /regions:
     get:
       summary: Get Regions
@@ -1762,6 +1770,7 @@ paths:
                   - data
       operationId: Get Regions
       description: Get data on all regions
+      security: []
   '/regions/{region-symbol}':
     parameters:
       - schema:
@@ -1820,6 +1829,7 @@ paths:
                   - data
       operationId: Get Specific Region
       description: Get specific region
+      security: []
   /metrics:
     get:
       summary: Get Metrics
@@ -1923,6 +1933,7 @@ paths:
                   - data
       operationId: Get Metrics
       description: Get various server metrics like coins per user and the total number of each good bought and sold
+      security: []
   /my/locations:
     get:
       summary: Get My Locations
@@ -2084,3 +2095,5 @@ tags:
   - name: Users
   - name: Warehouses
   - name: World
+security:
+  - bearerAuth: []
