@@ -354,6 +354,7 @@ The game should follow a consistent terminology. Please report in discord if the
 - Use data field for error responses to convey programmatically what failed validation (similar to some space traders endpoints)
 - - Better request validation functions
 - Persist metrics (like unique and active users) between server restarts... Not sure yet whether I'd rather save these to the Redis DB, .CSV, or .YAML
+- Cheat codes, maybe entered by talking to the NPC on your farm
 
 ### **[v0.7]**
 
@@ -383,6 +384,7 @@ The game should follow a consistent terminology. Please report in discord if the
 - Meta account and progression, leaderboards
 - Landing page
 - Live server that is persistent, only wiped on scheduled update day (seasons). Updates are pushed every (other?) week on reset when available
+- - Docker/docker compose, CI/CD pipeline
 - Wild Seeds implemented?
 
 ### **[Post-1.0]**
