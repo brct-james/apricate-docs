@@ -344,6 +344,7 @@ The game should follow a consistent terminology. Please report in discord if the
 - Rename contracts to Quests
 - Use data field for error responses to convey programmatically what failed validation (similar to some space traders endpoints)
 - - Better request validation functions
+- Persist metrics (like unique and active users) between server restarts... Not sure yet whether I'd rather save these to the Redis DB, .CSV, or .YAML
 
 ### **[v0.7]**
 
