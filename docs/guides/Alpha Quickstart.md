@@ -384,19 +384,21 @@ The game should follow a consistent terminology. Please report in discord if the
 - Boldor, Yoggoth, Tyldia location YAML defined
 - Assistants can transfer things between warehouses
 - - Ports for moving between islands
-- Market uses 4 types of market order, simulates dynamic NPC supply/demand/pricing that evolves over time and based on all player investment in market
-- Markets initial state defined in YAML
-- At least 10 different plants excluding Wild Seeds, buy and sell at the markets of at least 3 towns, all starting town NPCs have quests
+- At least 10 different plants excluding Wild Seeds, all starting town NPCs have quests
 - Atomize functions, write tests
 
 ### **[v0.8]**
 
-- At least 20 plants excluding Wild Seeds, add at least 2 additional tools for growing some of the new plants, add infinite randomized quests from certain NPCs, all towns have markets, all NPCs on starting map have quests
+- At least 20 plants excluding Wild Seeds, add at least 2 additional tools for growing some of the new plants, add infinite randomized quests from certain NPCs, all NPCs on starting map have quests
+- Market uses 4 types of market order, simulates dynamic NPC supply/demand/pricing that evolves over time and based on all player investment in market
+- Markets initial state defined in YAML
+- buy and sell at the markets of at least 3 towns
 - Leaderboards (basically top-10 of ranked metrics?)
 
 ### **[v0.9]**
 
 - Add buildings
+- all towns have markets
 - Add refining/crafting with at least 8 recipes, add at least 4 new tools to support crafting, add at least 2 new buildings to support crafting
 - Add researching plants (with associated building) to reveal full information
 - Full Fog of War and hide unresearched plant information
