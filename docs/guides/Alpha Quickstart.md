@@ -42,6 +42,8 @@ Each advanced section has a list of specific feedback I'm looking for, but don't
 
 ## Beginner Guide
 
+TODO: True beginner-level advice on authorization, making requests, etc.
+
 ### Registration & Getting Information
 
 - To begin, register a user and ***save your token***: `POST: /api/users/{username}/claim`
