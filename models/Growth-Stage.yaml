@@ -44,7 +44,7 @@ properties:
   action:
     type: string
     minLength: 1
-  Skippable:
+  skippable:
     type: boolean
   consumable_options:
     type: array
@@ -83,4 +83,5 @@ required:
   - name
   - description
   - action
-  - Skippable
+  - skippable
+title: ''
