@@ -1,0 +1,24 @@
+description: The representation of a plant that is growing in a plot
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+  size:
+    type: string
+    minLength: 1
+  current_stage:
+    type: number
+  yield_modifier:
+    type: number
+required:
+  - name
+  - size
+  - current_stage
+  - yield_modifier
+x-examples:
+  example-1:
+    name: Potato
+    size: Miniature
+    current_stage: 0
+    yield_modifier: 1

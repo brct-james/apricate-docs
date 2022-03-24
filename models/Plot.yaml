@@ -9,6 +9,14 @@ x-examples:
     plant_quantity: 0
     growth_complete_timestamp: 0
     plant: null
+examples:
+  - uuid: string
+    location_symbol: string
+    id: 0
+    size: string
+    plant_quantity: 0
+    growth_complete_timestamp: 0
+    plant: null
 properties:
   uuid:
     type: string
@@ -28,8 +36,7 @@ properties:
   plant:
     oneOf:
       - type: 'null'
-        properties: {}
-      - $ref: ./Plant.yaml
+      - $ref: ./PlotPlant.yaml
 required:
   - uuid
   - location_symbol
@@ -38,11 +45,3 @@ required:
   - plant_quantity
   - growth_complete_timestamp
   - plant
-examples:
-  - uuid: string
-    location_symbol: string
-    id: 0
-    size: string
-    plant_quantity: 0
-    growth_complete_timestamp: 0
-    plant: null

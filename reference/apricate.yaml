@@ -573,7 +573,7 @@ paths:
                     description: 'map[string]Plant'
                     properties:
                       map_key_plant_name:
-                        $ref: ../models/Plant.yaml
+                        $ref: ../models/PlantDefinition.yaml
                 required:
                   - code
                   - message
@@ -633,7 +633,7 @@ paths:
                     type: string
                     minLength: 1
                   data:
-                    $ref: ../models/Plant.yaml
+                    $ref: ../models/PlantDefinition.yaml
                 required:
                   - code
                   - message

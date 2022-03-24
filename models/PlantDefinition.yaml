@@ -1,4 +1,4 @@
-description: A plant
+description: The definition of a plant in the PlantDictionary
 type: object
 x-examples:
   example-1:
@@ -39,3 +39,4 @@ examples:
           seeds: {}
           goods: {}
           final_harvest: true
+title: ''
