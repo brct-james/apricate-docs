@@ -99,6 +99,8 @@ paths:
     parameters:
       - schema:
           type: string
+          minLength: 1
+          maxLength: 32
         name: username
         in: path
         required: true
@@ -156,7 +158,7 @@ paths:
                   - code
                   - message
                   - data
-      description: Attempt to create new user with the specified username
+      description: 'Attempt to create new user with the specified username (1-32 chars, alphanumeric plus "-" and "_")'
       tags:
         - Users
       security: []
