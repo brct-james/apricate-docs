@@ -18,6 +18,22 @@ x-examples:
         quantity: 1
     added_yield: 0.5
     growth_time: 30
+examples:
+  - name: string
+    description: string
+    action: string
+    optional: true
+    action_to_skip: string
+    consumable_options:
+      - name: string
+        quantity: 0
+    added_yield: 0
+    growth_time: 0
+    harvestable:
+      produce: {}
+      seeds: {}
+      goods: {}
+      final_harvest: true
 properties:
   name:
     type: string
@@ -28,11 +44,8 @@ properties:
   action:
     type: string
     minLength: 1
-  optional:
+  Skippable:
     type: boolean
-  action_to_skip:
-    type: string
-    minLength: 1
   consumable_options:
     type: array
     uniqueItems: true
@@ -70,19 +83,4 @@ required:
   - name
   - description
   - action
-examples:
-  - name: string
-    description: string
-    action: string
-    optional: true
-    action_to_skip: string
-    consumable_options:
-      - name: string
-        quantity: 0
-    added_yield: 0
-    growth_time: 0
-    harvestable:
-      produce: {}
-      seeds: {}
-      goods: {}
-      final_harvest: true
+  - Skippable
