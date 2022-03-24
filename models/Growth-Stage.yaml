@@ -34,6 +34,7 @@ examples:
       seeds: {}
       goods: {}
       final_harvest: true
+title: ''
 properties:
   name:
     type: string
@@ -58,11 +59,15 @@ properties:
           minLength: 1
         quantity:
           type: number
+        added_yield:
+          type: number
       required:
         - name
         - quantity
+        - added_yield
   added_yield:
     type: number
+    description: Stage-level added yield should always be 0 if consumable options is present
   growth_time:
     type: number
   harvestable:
@@ -84,4 +89,4 @@ required:
   - description
   - action
   - skippable
-title: ''
+  - added_yield
