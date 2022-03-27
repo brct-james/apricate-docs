@@ -12,6 +12,10 @@ The magic system in Apricate is based on manipulation of the Lattice. It has no 
 
 **Lattice Rejection End** is the timestamp for when you may cast another spell. After casting any spell, the Lattice will reject further manipulation from you for a set time. Higher tier magic generally incurs a longer rejection time, though some spells cause less rejection than others even with similar flux requirements. At this time, the research mages of Astrid are unsure as to why that is.
 
+### The Lattice
+
+The Lattice is the fabric of the universe that magic manipulates. Mages (like the player) are like pins in the fabric, and can distort the Lattice in n-th dimensional space to cause various effects. Certain rites increase or decrease distortion tier. Distortion tier is logarithmic, so rising to the next tier becomes exponentially more difficult. Generally, the largest magics require the greatest distortion. Flux is bounded between 1 and 1 billion inclusive, so distortion tiers range from 0-9.
+
 ### Distortion Tiers
 
 Here is a list of the distortion tiers, their arcane flux ranges, and a rough approximation of the power you wield at each tier. Note, even if you are ostensibly at a given tier, that does not mean casting spells of that tier is without preparation or cost. Even an archmage will spend many days or weeks preparing for a T7 spell.
