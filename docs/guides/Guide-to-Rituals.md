@@ -62,3 +62,112 @@ If you get your user information with `GET: /my/user` you will notice you start 
 We'll be casting this on the home farm, so call `POST: /my/farms/TS-PR-HF/ritual/STRRFRVRNG`. If all is correct, you should get a response with your new user and warehouse data, and your arcane flux should have increased by 100.
 
 Follow this up at least 10 seconds later with `POST: /my/farms/TS-PR-HF/rital/FLGJ` and you will get a similar response. Now your arcane flux will have decreased by 50, and you should see another assistant in the list on your user object. It will be a Familiar archetype assistant, like one of the ones you start with.
+
+## Response Examples
+
+### GET: /rites/FLGJ
+
+```json
+{
+    "code": 1,
+    "message": "[Generic_Success] Request Successful",
+    "data": {
+        "runic_symbol": "FLGJ",
+        "name": "The Accompaniment of Fylgja",
+        "description": "Summon a Familiar archetype Assistant using the irresistable Vocatus Blossom, and bind them by playing The Accompaniment of Fylgja on a spirit flute",
+        "required_buildings": {
+            "Summoning Circle": 1
+        },
+        "minimum_distortion_tier": 0,
+        "maximum_distortion_tier": 4,
+        "arcane_flux": -50,
+        "lattice_rejection_time": 30,
+        "currencies": null,
+        "materials": {
+            "tools": {
+                "Spirit Flute": 1
+            },
+            "goods": {
+                "Vocatus Blossom": 1
+            }
+        }
+    }
+}
+```
+
+### POST: /my/farms/TS-PR-HF/ritual/FLGJ
+
+```json
+{
+    "code": 1,
+    "message": "[Generic_Success] Request Successful",
+    "data": {
+        "user": {
+            "token": "redacted",
+            "username": "Greenitthe",
+            "title": "Owner",
+            "ledger": {
+                "currencies": {
+                    "Coins": 1000
+                },
+                "favor": {
+                    "Vince Kosuga": 50
+                },
+                "escrow": {}
+            },
+            "arcane_flux": 2150,
+            "distortion_tier": 3.33,
+            "user-since": 1648395318,
+            "achievements": [
+                "Owner",
+                "Contributor",
+                "Noob"
+            ],
+            "contracts": [
+                "Greenitthe|Contract-0"
+            ],
+            "assistants": [
+                "Greenitthe|Assistant-0",
+                "Greenitthe|Assistant-1",
+                "Greenitthe|Assistant-2"
+            ],
+            "caravans": [],
+            "farms": [
+                "Greenitthe|Farm-TS-PR-HF"
+            ],
+            "plots": [
+                "Greenitthe|Farm-TS-PR-HF|Plot-2",
+                "Greenitthe|Farm-TS-PR-HF|Plot-0",
+                "Greenitthe|Farm-TS-PR-HF|Plot-1"
+            ],
+            "warehouses": [
+                "Greenitthe|Warehouse-TS-PR-HF"
+            ],
+            "lattice_rejection_end": 1648398089
+        },
+        "warehouse": {
+            "uuid": "Greenitthe|Warehouse-TS-PR-HF",
+            "location_symbol": "TS-PR-HF",
+            "tools": {
+                "Spirit Flute": 1,
+                "Sprouting Pot": 1,
+                "Water Wand": 1
+            },
+            "produce": {
+                "Potato|Tiny": 1000
+            },
+            "seeds": {
+                "Convocare Bulb": 1000,
+                "Grape Seeds": 1000,
+                "Uona Spore": 1000
+            },
+            "goods": {
+                "Vocatus Blossom": 999,
+                "Vocatus Blossom In Perfect Bloom": 1000,
+                "Wagyu Fungus Steak": 1000,
+                "Water": 1000
+            }
+        }
+    }
+}
+```
