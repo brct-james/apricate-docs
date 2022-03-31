@@ -135,3 +135,5 @@ becomes
 - Port fare being per caravan rather than per assistant may be imbalanced in the mid-game where getting more assistants becomes easier
 
 - Rites not working correctly (missing/extra items/flux, etc.)
+
+- Responses that are nonsensical or that could be improved (i.e. I should really be returning simply the changes to the warehouse, rather than the entire warehouse object, for most endpoints where it is included)
