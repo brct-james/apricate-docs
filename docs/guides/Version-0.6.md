@@ -22,7 +22,7 @@ Note: The trade/cargo system is fairly different than in space traders. Rather t
 
 - Caravans have a carry capacity equal to the sum of their assistants' caps multiplied by the caravan Team Factor
 
-- Caravan Team Factor is `1 + (0.1 * (numAssistants - 1))` so caravans with more assistants get a bigger bonus to their total carrying capacity
+- Caravan Team Factor is `1 + (0.1 * (numAssistants - 1))` so caravans with more assistants get a bigger bonus to their total carrying capacity, and even small assistants contribute to the team factor, so they retain relevance throughout the game
 
 - Caravans must be manually disbanded at their destination with the `DELETE: /my/caravans/{caravan-id}` endpoint
 
