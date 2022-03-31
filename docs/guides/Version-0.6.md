@@ -74,7 +74,13 @@ Ratelimiting is implemented, you should have 4 calls per second with an addition
 
 ## Changes to Existing Systems
 
+- Several new types of plants
+
+- Plant growth stages now have a Repeatable bool trait, which lets you repeat that stage indefinitely (e.g. for recurring harvests)
+
 - Plant definitions now have MinSize and MaxSize traits, which means you must plant them at sizes within those bounds
+
+- Changes to old plant definitions to accommodate the new traits
 
 - Added Caravans, ArcaneFlux, DistortionTier, LatticeRejectionEnd fields to User
 
