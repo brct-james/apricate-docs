@@ -1,5 +1,11 @@
 # Version 0.6
 
+## Preface
+
+Version 0.6 brings many new features, including traveling between locations on the home island of Pria and other islands in the Tyldian Spur region. As part of this, several new markets have been opened up on the starting, and other, islands. This allows players to identify and automate profitable trade routes, as well as selling the products of their plants.
+
+Note: The trade/cargo system is fairly different than in space traders. Rather than using individual ships, you will use groups of assistants in Caravans. Caravans combine and buff the carrying capacity of their assistant members. You may benefit to think of assistants as 'pools' of each type rather than individual units.
+
 ## New Features
 
 ### Caravans
@@ -74,7 +80,7 @@ Ratelimiting is implemented, you should have 4 calls per second with an addition
 
 - Added Speed and Carrying Capacity to assistants, removed Route
 
-- 'Regions' are now 'Islands' - you may not notice this much as regions weren't really built out before
+- The old 'Regions' are now 'Islands' and the new 'Regions' are groups of islands - you may not notice this much as these weren't really fleshed out before
 
 - Produce in warehouses has been reworked, and now follows the convention of other warehouse categories (see example below)
 
