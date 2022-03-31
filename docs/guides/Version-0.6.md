@@ -74,6 +74,8 @@ Ratelimiting is implemented, you should have 4 calls per second with an addition
 
 ## Changes to Existing Systems
 
+- The beginning of refactoring the request validation functions to return more helpful information in the Data field (see caravans as an example of what the end goal might look like)
+
 - Several new types of plants
 
 - Plant growth stages now have a Repeatable bool trait, which lets you repeat that stage indefinitely (e.g. for recurring harvests)
