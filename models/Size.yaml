@@ -1,0 +1,14 @@
+type: string
+title: Size
+description: Size Enum
+enum:
+  - Average
+  - Colossal
+  - Gigantic
+  - Huge
+  - Large
+  - Miniature
+  - Modest
+  - Small
+  - Tiny
+  - Titanic

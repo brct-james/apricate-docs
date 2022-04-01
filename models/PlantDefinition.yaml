@@ -5,21 +5,6 @@ x-examples:
     name: Cabbage
     description: 'The Cabbage is a mundane plant that grows above ground. It is relatively fast growing and easy to care for, not requiring any additional watering in most climates'
     growth_stages: []
-properties:
-  name:
-    type: string
-    minLength: 1
-  description:
-    type: string
-    minLength: 1
-  growth_stages:
-    type: array
-    items:
-      $ref: ./Growth-Stage.yaml
-required:
-  - name
-  - description
-  - growth_stages
 examples:
   - name: string
     description: string
@@ -40,3 +25,24 @@ examples:
           goods: {}
           final_harvest: true
 title: ''
+properties:
+  name:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  min_size:
+    $ref: ./Size.yaml
+  max_size:
+    $ref: ./Size.yaml
+  growth_stages:
+    type: array
+    items:
+      $ref: ./Growth-Stage.yaml
+required:
+  - name
+  - description
+  - min_size
+  - max_size
+  - growth_stages

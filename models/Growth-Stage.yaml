@@ -47,6 +47,8 @@ properties:
     minLength: 1
   skippable:
     type: boolean
+  repeatable:
+    type: boolean
   consumable_options:
     type: array
     uniqueItems: true
@@ -89,4 +91,5 @@ required:
   - description
   - action
   - skippable
+  - repeatable
   - added_yield

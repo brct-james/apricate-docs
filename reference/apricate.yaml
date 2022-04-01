@@ -2583,6 +2583,7 @@ paths:
         Describes the various available /about/... endpoints available
 
         data.information is map[string]string
+      security: []
   /about/sizes:
     get:
       summary: Get About Sizes
@@ -2600,6 +2601,7 @@ paths:
         Describes the Size enum used by the game for plots, plants, and produce. The information field is the map of string size to integer size.
 
         data.information is map[string]integer
+      security: []
   /about/magic:
     get:
       summary: Get About Magic
@@ -2617,6 +2619,7 @@ paths:
         Describes various parts of the magic system including lore, arcane flux, and distortion. The information field is a map of string topic to string information.
 
         data.information is map[string]string
+      security: []
   /about/plants:
     get:
       summary: Get About Plants
@@ -2634,6 +2637,7 @@ paths:
         Describes plants and the stages they go through during growth, as well as the actions used to advance them through these stages
 
         data.information is map[string]string
+      security: []
   /about/world:
     get:
       summary: Get About World
@@ -2651,6 +2655,7 @@ paths:
         Describes the lore of the world, the player, and the mechanical grouping of locations
 
         data.information is map[string]string
+      security: []
   /rites:
     get:
       summary: Get Rites
@@ -2706,6 +2711,7 @@ paths:
       description: Get all rites known by your user
       tags:
         - Rites
+      security: []
   '/rites/{runic-symbol}':
     parameters:
       - schema:
@@ -2745,6 +2751,7 @@ paths:
       tags:
         - Rites
       description: Get a specific rite if it is known to your user
+      security: []
 components:
   schemas: {}
   securitySchemes:
