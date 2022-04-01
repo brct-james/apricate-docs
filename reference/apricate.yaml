@@ -1895,9 +1895,9 @@ paths:
                             minLength: 1
                           market_item_data:
                             type: object
+                            description: 'map[string]GMBSData where key is the item''s name e.g. "Fertilizer" or "Potato|Large"'
                             required:
                               - map_key_item_name
-                            description: 'map[string]GMBSData where key is the item''s name e.g. "Fertilizer" or "Potato|Large"'
                             properties:
                               map_key_item_name:
                                 type: object
@@ -1924,12 +1924,50 @@ paths:
                             minLength: 1
                           coins:
                             type: object
+                            description: 'map[string]Integer where key is username'
                             required:
                               - map_key_username
-                            description: 'map[string]Integer where key is username'
                             properties:
                               map_key_username:
                                 type: number
+                      Harvests:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          total_harvests:
+                            type: object
+                            description: 'map[string]integer'
+                      Rituals:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          total_rituals:
+                            type: object
+                            description: 'map[string]integer'
+                      User Magic:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          magic:
+                            type: object
+                            description: 'map[string]object'
+                            properties:
+                              map_string_key_username:
+                                type: object
+                                properties:
+                                  Arcane Flux:
+                                    type: integer
+                                  Distortion Tier:
+                                    type: number
                 required:
                   - code
                   - message
