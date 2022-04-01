@@ -2524,6 +2524,91 @@ paths:
       tags:
         - Quests
       description: Get data on a specific contract
+  /about:
+    get:
+      summary: Get About
+      tags:
+        - Information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/About.yaml
+      operationId: Get About
+      description: |-
+        Describes the various available /about/... endpoints available
+
+        data.information is map[string]string
+  /about/sizes:
+    get:
+      summary: Get About Sizes
+      tags:
+        - Information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/About.yaml
+      operationId: Get About Sizes
+      description: |-
+        Describes the Size enum used by the game for plots, plants, and produce. The information field is the map of string size to integer size.
+
+        data.information is map[string]integer
+  /about/magic:
+    get:
+      summary: Get About Magic
+      tags:
+        - Information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/About.yaml
+      operationId: Get About Magic
+      description: |-
+        Describes various parts of the magic system including lore, arcane flux, and distortion. The information field is a map of string topic to string information.
+
+        data.information is map[string]string
+  /about/plants:
+    get:
+      summary: Get About Plants
+      tags:
+        - Information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/About.yaml
+      operationId: Get About Plants
+      description: |-
+        Describes plants and the stages they go through during growth, as well as the actions used to advance them through these stages
+
+        data.information is map[string]string
+  /about/world:
+    get:
+      summary: Get About World
+      tags:
+        - Information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/About.yaml
+      operationId: Get About World
+      description: |-
+        Describes the lore of the world, the player, and the mechanical grouping of locations
+
+        data.information is map[string]string
 components:
   schemas: {}
   securitySchemes:
@@ -2535,6 +2620,7 @@ components:
 tags:
   - name: Assistants
   - name: Farms
+  - name: Information
   - name: Locations
   - name: Markets
   - name: Metrics
