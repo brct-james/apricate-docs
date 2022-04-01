@@ -1,0 +1,61 @@
+description: Rite object
+type: object
+x-examples:
+  example-1:
+    runic_symbol: FLGJ
+    name: The Accompaniment of Fylgja
+    description: 'Summon a Familiar archetype Assistant using the irresistable Vocatus Blossom, and bind them by playing The Accompaniment of Fylgja on a spirit flute'
+    required_buildings:
+      Summoning Circle: 1
+    minimum_distortion_tier: 0
+    maximum_distortion_tier: 4
+    arcane_flux: -50
+    lattice_rejection_time: 30
+    currencies: null
+    materials:
+      tools:
+        Spirit Flute: 1
+      goods:
+        Vocatus Blossom: 1
+properties:
+  runic_symbol:
+    type: string
+    minLength: 1
+  name:
+    type: string
+    minLength: 1
+  description:
+    type: string
+    minLength: 1
+  required_buildings:
+    type: object
+    required:
+      - map_key_building_name
+    description: 'map[string]integer'
+    properties:
+      map_key_building_name:
+        type: integer
+  minimum_distortion_tier:
+    type: number
+  maximum_distortion_tier:
+    type: number
+  arcane_flux:
+    type: integer
+  lattice_rejection_time:
+    type: integer
+    description: in seconds
+  currencies:
+    type: object
+    description: 'map[string]integer'
+  materials:
+    $ref: ./Wares.yaml
+required:
+  - runic_symbol
+  - name
+  - description
+  - required_buildings
+  - minimum_distortion_tier
+  - maximum_distortion_tier
+  - arcane_flux
+  - lattice_rejection_time
+title: ''

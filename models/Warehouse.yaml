@@ -36,6 +36,17 @@ x-examples:
       Enchanted Water: 1000
       Fertilizer: 1000
       Water: 1000
+examples:
+  - uuid: string
+    location_symbol: string
+    tools: {}
+    produce:
+      map_key_produce_name:
+        name: string
+        quantity: 0
+        size: string
+    seeds: {}
+    goods: {}
 properties:
   uuid:
     type: string
@@ -48,11 +59,7 @@ properties:
     type: object
   produce:
     type: object
-    required:
-      - map_key_produce_name
-    properties:
-      map_key_produce_name:
-        $ref: ./Produce.yaml
+    description: 'map[string]integer'
   seeds:
     type: object
     description: 'map[string]integer'
@@ -66,14 +73,3 @@ required:
   - produce
   - seeds
   - goods
-examples:
-  - uuid: string
-    location_symbol: string
-    tools: {}
-    produce:
-      map_key_produce_name:
-        name: string
-        quantity: 0
-        size: string
-    seeds: {}
-    goods: {}

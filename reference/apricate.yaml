@@ -2609,6 +2609,100 @@ paths:
         Describes the lore of the world, the player, and the mechanical grouping of locations
 
         data.information is map[string]string
+  /rites:
+    get:
+      summary: Get Rites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      APCRPHNSPRGGNCRGNS:
+                        runic_symbol: APCRPHNSPRGGNCRGNS
+                        name: Invoking the Apocryphon Description of Sprigganic Origins
+                        description: 'Summon a Sprite archetype Assistant with Vocatus Blossom & Fairy Dust tea, binding them with the Song of Sprigganhome played on a spirit flute'
+                        required_buildings:
+                          Summoning Circle: 1
+                        minimum_distortion_tier: 3
+                        maximum_distortion_tier: 5
+                        arcane_flux: 500
+                        lattice_rejection_time: 60
+                        currencies: null
+                        materials:
+                          tools:
+                            Spirit Flute: 1
+                          goods:
+                            Enchanted Water: 20
+                            Vial of Fairy Dust: 1
+                            Vocatus Blossom: 1
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - map_string_key_runic_symbol
+                    properties:
+                      map_string_key_runic_symbol:
+                        $ref: ../models/Rite.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Rites
+      description: Get all rites known by your user
+      tags:
+        - Rites
+  '/rites/{runic-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: runic-symbol
+        in: path
+        required: true
+        description: 'The runic symbol of the rite you want to select, alpha characters only'
+    get:
+      summary: Get Specific Rite
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data: {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Rite.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Rite
+      tags:
+        - Rites
+      description: Get a specific rite if it is known to your user
 components:
   schemas: {}
   securitySchemes:
@@ -2627,6 +2721,7 @@ tags:
   - name: Plants
   - name: Plots
   - name: Quests
+  - name: Rites
   - name: Users
   - name: Warehouses
   - name: World

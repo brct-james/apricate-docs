@@ -1,0 +1,23 @@
+description: Wares object
+type: object
+x-examples:
+  example-1:
+    tools:
+      Spirit Flute: 1
+    goods:
+      Vocatus Blossom: 1
+    produce: {}
+    seeds: {}
+properties:
+  tools:
+    type: object
+    description: 'map[string]integer'
+  goods:
+    type: object
+    description: 'map[string]integer'
+  produce:
+    type: object
+    description: 'map[string]integer'
+  seeds:
+    type: object
+    description: 'map[string]integer'
