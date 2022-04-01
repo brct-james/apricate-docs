@@ -141,3 +141,5 @@ becomes
 - Rites not working correctly (missing/extra items/flux, etc.)
 
 - Responses that are nonsensical or that could be improved (i.e. I should really be returning simply the changes to the warehouse, rather than the entire warehouse object, for most endpoints where it is included)
+
+- Is carrying capacity for produce calculated correctly (size * quantity)?
