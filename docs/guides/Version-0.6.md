@@ -90,6 +90,8 @@ Ratelimiting is implemented, you should have 4 calls per second with an addition
 
 - The old 'Regions' are now 'Islands' and the new 'Regions' are groups of islands - you may not notice this much as these weren't really fleshed out before
 
+- - The Location object changed: location.region_name -> location.island_name
+
 - Produce in warehouses has been reworked, and now follows the convention of other warehouse categories (see example below)
 
 ```json
