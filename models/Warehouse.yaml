@@ -59,7 +59,7 @@ properties:
     type: object
   produce:
     type: object
-    description: 'map[string]integer'
+    description: 'map[string]integer where string key is of the format "Name|Size" e.g. "Potato|Large"'
   seeds:
     type: object
     description: 'map[string]integer'

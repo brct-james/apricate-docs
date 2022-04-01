@@ -15,6 +15,16 @@ x-examples:
       - Owner
       - Contributor
       - Noob
+examples:
+  - username: string
+    title: string
+    ledger:
+      currencies: {}
+      favor: {}
+      escrow: {}
+    user-since: 0
+    achievements:
+      - string
 properties:
   username:
     type: string
@@ -35,6 +45,10 @@ properties:
         type: object
       escrow:
         type: object
+  arcane_flux:
+    type: integer
+  distortion_tier:
+    type: number
   user-since:
     type: number
   achievements:
@@ -45,15 +59,7 @@ required:
   - username
   - title
   - ledger
+  - arcane_flux
+  - distortion_tier
   - user-since
   - achievements
-examples:
-  - username: string
-    title: string
-    ledger:
-      currencies: {}
-      favor: {}
-      escrow: {}
-    user-since: 0
-    achievements:
-      - string

@@ -27,6 +27,27 @@ x-examples:
       - trian|Farm-TS-PR-HF|Plot-3
     warehouses:
       - trian|Warehouse-TS-PR-HF
+examples:
+  - token: string
+    username: string
+    title: string
+    ledger:
+      currencies: {}
+      favor: {}
+      escrow: {}
+    user-since: 0
+    achievements:
+      - string
+    contracts:
+      - string
+    assistants:
+      - string
+    farms:
+      - string
+    plots:
+      - string
+    warehouses:
+      - string
 properties:
   token:
     type: string
@@ -50,6 +71,10 @@ properties:
         type: object
       escrow:
         type: object
+  arcane_flux:
+    type: integer
+  distortion_tier:
+    type: number
   user-since:
     type: number
   achievements:
@@ -61,6 +86,10 @@ properties:
     items:
       type: string
   assistants:
+    type: array
+    items:
+      type: string
+  caravans:
     type: array
     items:
       type: string
@@ -76,36 +105,22 @@ properties:
     type: array
     items:
       type: string
+  lattice_interference_rejection_end:
+    type: integer
+    description: Unix Timestamp
 required:
   - token
   - username
   - title
   - ledger
+  - arcane_flux
+  - distortion_tier
   - user-since
   - achievements
   - contracts
   - assistants
+  - caravans
   - farms
   - plots
   - warehouses
-examples:
-  - token: string
-    username: string
-    title: string
-    ledger:
-      currencies: {}
-      favor: {}
-      escrow: {}
-    user-since: 0
-    achievements:
-      - string
-    contracts:
-      - string
-    assistants:
-      - string
-    farms:
-      - string
-    plots:
-      - string
-    warehouses:
-      - string
+  - lattice_interference_rejection_end
