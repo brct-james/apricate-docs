@@ -2804,6 +2804,7 @@ paths:
                   - code
                   - message
                   - data
+              examples: {}
       description: 'Attempt to cast the specified ritual at the specified farm. No body required, but will fail if you do not have the required flux, currency, and/or material requirements'
       tags:
         - Magic
