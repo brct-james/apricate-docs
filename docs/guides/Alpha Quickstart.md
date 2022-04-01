@@ -10,6 +10,10 @@ My goals with Apricate are to provide a new take on the API game formula establi
 
 Though the initial learning curve may at first appear steep, the game should allow you to avoid more complex concepts early on (like Optional Growth Stages) and will benefit from a (planned) in-game tutorial quest line. Feedback on the Beginner Guide is *greatly* appreciated.
 
+## v0.6 Update
+
+[Patch notes](apricate.io/docs/v0-6)
+
 ## Setting Summary
 
 Apricate is set in the world of Astrid, a war-torn fantasy world in the pre-industrial feudal era. In the aftermath of recent fighting, a tragedy known as The Fracturing split apart the continents into thousands of small islands. Magical storms blanket the seas, leaving few navigable routes.
