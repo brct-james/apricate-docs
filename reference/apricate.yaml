@@ -2158,7 +2158,11 @@ paths:
                     type: string
                     minLength: 1
                   data:
-                    $ref: ../models/Assistant.yaml
+                    type: object
+                    description: 'map[string]Assistant'
+                    properties:
+                      map_key_string_assistant_uuid:
+                        $ref: ../models/Assistant.yaml
                 required:
                   - code
                   - message

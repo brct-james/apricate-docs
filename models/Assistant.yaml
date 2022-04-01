@@ -8,6 +8,13 @@ x-examples:
     improvements: {}
     location_symbol: TS-PR-HF
     route: ''
+examples:
+  - uuid: string
+    id: 0
+    archetype: string
+    improvements: {}
+    location_symbol: string
+    route: string
 properties:
   uuid:
     type: string
@@ -17,25 +24,28 @@ properties:
     description: Assistant-id
   archetype:
     type: string
-    minLength: 1
+    enum:
+      - Imp
+      - Familiar
+      - Golem
+      - Oni
+      - Sprite
+      - Dragon
+  speed:
+    type: integer
+  carrying_capacity:
+    type: integer
   improvements:
     type: object
-  location_symbol:
+  location:
     type: string
     minLength: 1
-  route:
-    type: string
+    description: EITHER location symbol OR caravan uuid
 required:
   - uuid
   - id
   - archetype
+  - speed
+  - carrying_capacity
   - improvements
-  - location_symbol
-  - route
-examples:
-  - uuid: string
-    id: 0
-    archetype: string
-    improvements: {}
-    location_symbol: string
-    route: string
+  - location
