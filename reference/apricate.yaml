@@ -2752,6 +2752,59 @@ paths:
         - Rites
       description: Get a specific rite if it is known to your user
       security: []
+  '/my/farms/{location-symbol}/ritual/{runic-symbol}':
+    parameters:
+      - schema:
+          type: string
+        name: location-symbol
+        in: path
+        required: true
+        description: Farm's location symbol e.g. TS-PR-HF
+      - schema:
+          type: string
+        name: runic-symbol
+        in: path
+        required: true
+        description: 'The runic symbol of the rite you want to select, alpha characters only'
+    post:
+      summary: Cast Ritual at Farm
+      operationId: Cast Ritual at Farm
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      user: {}
+                      warehouse: {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - user
+                      - warehouse
+                    properties:
+                      user:
+                        $ref: ../models/User-Info.yaml
+                      warehouse:
+                        $ref: ../models/Warehouse.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      description: 'Attempt to cast the specified ritual at the specified farm. No body required, but will fail if you do not have the required flux, currency, and/or material requirements'
 components:
   schemas: {}
   securitySchemes:
