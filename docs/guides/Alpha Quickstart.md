@@ -10,7 +10,7 @@ My goals with Apricate are to provide a new take on the API game formula establi
 
 Though the initial learning curve may at first appear steep, the game should allow you to avoid more complex concepts early on (like Optional Growth Stages) and will benefit from a (planned) in-game tutorial quest line. Feedback on the Beginner Guide is *greatly* appreciated.
 
-## v0.6 Update
+## v0.6 "Assistants" Update
 
 [Patch notes](apricate.io/docs/v0-6)
 
