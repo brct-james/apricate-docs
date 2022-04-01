@@ -2709,9 +2709,9 @@ paths:
                   - data
       operationId: Get Rites
       description: Get all rites known by your user
-      tags:
-        - Rites
       security: []
+      tags:
+        - Magic
   '/rites/{runic-symbol}':
     parameters:
       - schema:
@@ -2748,10 +2748,10 @@ paths:
                   - message
                   - data
       operationId: Get Specific Rite
-      tags:
-        - Rites
       description: Get a specific rite if it is known to your user
       security: []
+      tags:
+        - Magic
   '/my/farms/{location-symbol}/ritual/{runic-symbol}':
     parameters:
       - schema:
@@ -2805,6 +2805,8 @@ paths:
                   - message
                   - data
       description: 'Attempt to cast the specified ritual at the specified farm. No body required, but will fail if you do not have the required flux, currency, and/or material requirements'
+      tags:
+        - Magic
   /my/caravans:
     get:
       summary: Get Caravans
@@ -3011,12 +3013,12 @@ tags:
   - name: Farms
   - name: Information
   - name: Locations
+  - name: Magic
   - name: Markets
   - name: Metrics
   - name: Plants
   - name: Plots
   - name: Quests
-  - name: Rites
   - name: Users
   - name: Warehouses
   - name: World
