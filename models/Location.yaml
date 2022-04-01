@@ -10,6 +10,15 @@ x-examples:
     description: The small country farm you retired to after the war
     npcs:
       - Vince Kosuga
+examples:
+  - name: string
+    symbol: string
+    region_name: string
+    x: 0
+    'y': 0
+    description: string
+    npcs:
+      - string
 properties:
   name:
     type: string
@@ -17,7 +26,7 @@ properties:
   symbol:
     type: string
     minLength: 1
-  region_name:
+  island_name:
     type: string
     minLength: 1
   x:
@@ -34,17 +43,8 @@ properties:
 required:
   - name
   - symbol
-  - region_name
+  - island_name
   - x
   - 'y'
   - description
   - npcs
-examples:
-  - name: string
-    symbol: string
-    region_name: string
-    x: 0
-    'y': 0
-    description: string
-    npcs:
-      - string

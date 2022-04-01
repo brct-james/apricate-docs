@@ -2805,6 +2805,198 @@ paths:
                   - message
                   - data
       description: 'Attempt to cast the specified ritual at the specified farm. No body required, but will fail if you do not have the required flux, currency, and/or material requirements'
+  /my/caravans:
+    get:
+      summary: Get Caravans
+      tags:
+        - Caravans
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data: {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Caravan.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Caravans
+      description: Get info on all caravans
+    patch:
+      summary: Charter Caravan
+      operationId: Charter Caravan
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data: {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    $ref: ../models/Caravan.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      tags:
+        - Caravans
+      description: 'Attempt to charter a caravan with the specified assistants and wares. Fails if any of the assistants or wares are not at the origin location, or if either location is malformed.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  origin: TS-PR-HF
+                  destination: TS-PR-PSH
+                  assistants:
+                    - '0'
+                  wares:
+                    goods:
+                      Fertilizer: 5
+              properties:
+                origin:
+                  type: string
+                  minLength: 1
+                  description: Location Symbol
+                destination:
+                  type: string
+                  minLength: 1
+                  description: Location Symbol
+                assistants:
+                  type: array
+                  description: Numeric Assistant ID (e.g. for assistant UUID 'Greenitthe|Assistant-0' this would be just '0')
+                  items:
+                    type: integer
+                wares:
+                  $ref: ../models/Wares.yaml
+              required:
+                - origin
+                - destination
+                - assistants
+        description: |-
+          Describe the caravan you want to form including route, assistants, and wares.
+
+          To travel between islands, your origin must be one end of a linked port, and the destination the other (e.g. from Pria to Veldis, origin is TS-PR-PSH and destination is TS-VD-PNN). Traveling between ports takes Coins as a fare, and takes a set amount of travel time per route.
+
+          Traveling on land takes an amount of time determined by the speed of the assistants in the caravan. Caravan carrying capacity is determined by the assistants involved.
+
+          Each ware takes 1 unit of carry capacity per quantity, except for produce, where 1 unit takes quantity * size.
+    parameters: []
+  '/my/caravans/{caravan-id}':
+    parameters:
+      - schema:
+          type: string
+        name: caravan-id
+        in: path
+        required: true
+        description: The numeric caravan id
+    get:
+      summary: Get Specific Caravan
+      tags:
+        - Caravans
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful'
+                    data:
+                      - {}
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/Caravan.yaml
+                required:
+                  - code
+                  - message
+                  - data
+      operationId: Get Specific Caravan
+      description: Get info on a specific caravan
+    delete:
+      summary: Unpack Caravan
+      operationId: Unpack Caravan
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    code: 1
+                    message: '[Generic_Success] Request Successful | Caravan unpacked at TS-PR-PSH'
+                    data:
+                      assistants_released:
+                        - 0
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                    minLength: 1
+                  data:
+                    type: object
+                    required:
+                      - assistants_released
+                    properties:
+                      assistants_released:
+                        type: array
+                        description: Numeric Assistant ID (e.g. for assistant UUID 'Greenitthe|Assistant-0' this would be just '0')
+                        items:
+                          type: integer
+                required:
+                  - code
+                  - message
+                  - data
+      tags:
+        - Caravans
+      description: 'Attempts to unpack the caravan, releasing the associated assistants and depositing any wares in the local warehouse. Fails if not at destination yet.'
 components:
   schemas: {}
   securitySchemes:
@@ -2815,6 +3007,7 @@ components:
   responses: {}
 tags:
   - name: Assistants
+  - name: Caravans
   - name: Farms
   - name: Information
   - name: Locations

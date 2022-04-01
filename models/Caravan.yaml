@@ -1,0 +1,49 @@
+description: Caravan object
+type: object
+x-examples:
+  example-1:
+    uuid: Greenitthe|Caravan-1648831010905298744
+    id: 1648831010905298700
+    origin: TS-PR-HF
+    destination: TS-PR-PSH
+    assistants:
+      - '0'
+    wares:
+      goods:
+        Fertilizer: 5
+    arrival_time: 1648831194
+    seconds_till_arrival: 184
+properties:
+  uuid:
+    type: string
+    minLength: 1
+  id:
+    type: number
+  origin:
+    type: string
+    minLength: 1
+  destination:
+    type: string
+    minLength: 1
+  assistants:
+    type: array
+    description: Numeric Assistant ID (e.g. for assistant UUID 'Greenitthe|Assistant-0' this would be just '0')
+    items:
+      type: integer
+  wares:
+    $ref: ./Wares.yaml
+  arrival_time:
+    type: number
+    description: Unix Timestamp
+  seconds_till_arrival:
+    type: number
+    description: Seconds
+required:
+  - uuid
+  - id
+  - origin
+  - destination
+  - assistants
+  - wares
+  - arrival_time
+  - seconds_till_arrival
