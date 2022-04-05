@@ -1,3 +1,7 @@
+---
+tags: [Patch Notes]
+---
+
 # Version 0.6
 
 ## Preface

@@ -1,3 +1,7 @@
+---
+tags: [Guides]
+---
+
 # Guide to Magic, Rites, and Rituals
 
 This document will guide you through the intricacies of performing rituals. Presently, their primary function is to facilitate summoning new Assistants. In the future, they may be involved in certain crafting chains, enchanting, summoning free resources, or other beneficial functions.
