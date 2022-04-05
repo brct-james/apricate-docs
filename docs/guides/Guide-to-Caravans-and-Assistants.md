@@ -126,7 +126,7 @@ Now you are free to form another caravan. We're the Port Shoos in Pria, which co
 
 ```json
 {
-	"origin": "TS-PR-PSH",
+  "origin": "TS-PR-PSH",
     "destination": "TS-VD-PNN",
     "assistants": [0],
     "wares": {
