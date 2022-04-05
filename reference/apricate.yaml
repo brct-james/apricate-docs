@@ -16,7 +16,7 @@ info:
 
     ### Ratelimiting
 
-    Ratelimiting is implemented as a leaky bucket, with a size ("burst") of 4 and a 4/s refil (specifically 1/250ms).
+    Ratelimiting is implemented as a leaky bucket, with a size ("burst") of 4 and a 4/s refill (specifically 1/250ms).
 servers:
   - url: 'https://apricate.io/api'
 paths:

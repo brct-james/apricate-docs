@@ -74,7 +74,7 @@ Note: The trade/cargo system is fairly different than in space traders. Rather t
 
 ### Ratelimiting
 
-Ratelimiting is implemented as a leaky bucket, with a size ("burst") of 4 and a 4/s refil (specifically 1/250ms).
+Ratelimiting is implemented as a leaky bucket, with a size ("burst") of 4 and a 4/s refill (specifically 1/250ms).
 
 ## Changes to Existing Systems
 
