@@ -2,7 +2,7 @@
 tags: [Guides]
 ---
 
-# Alpha Guide
+# Alpha Quickstart
 
 Welcome to the Apricate Alpha. This is an extremely early build of the game, and most things are almost guaranteed to change between versions, so I would suggest putting minimal effort into writing SDKs/wrappers for now. That being said, I hope you enjoy getting a taste of the world of Astrid.
 
