@@ -72,6 +72,7 @@ properties:
     description: Stage-level added yield should always be 0 if consumable options is present
   growth_time:
     type: number
+    description: nullable
   harvestable:
     type: object
     properties:
@@ -86,6 +87,8 @@ properties:
         description: 'map[string]int'
       final_harvest:
         type: boolean
+    required:
+      - final_harvest
 required:
   - name
   - description
@@ -93,3 +96,4 @@ required:
   - skippable
   - repeatable
   - added_yield
+  - growth_time
