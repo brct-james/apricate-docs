@@ -9,7 +9,14 @@ info:
   license:
     identifier: GPL-3.0-only
     name: GPL-3
-  description: 'Apricate is a multiplayer game built on a free web API. You control a magic farm and several assistants who help sell your plants in town. Corner the market on onions or spend your days breeding the perfect hybrid, or find your own way in the world.'
+  description: |-
+    ### Overview
+
+    Apricate is a multiplayer game built on a free web API. You control a magic farm and several assistants who help sell your plants in town. Corner the market on onions or spend your days breeding the perfect hybrid, or find your own way in the world.
+
+    ### Ratelimiting
+
+    Ratelimiting is implemented as a leaky bucket, with a size ("burst") of 4 and a 4/s refil (specifically 1/250ms).
 servers:
   - url: 'https://apricate.io/api'
 paths:
