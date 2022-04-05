@@ -10,7 +10,7 @@ This document will guide you through interacting with markets. Presently, market
 
 You can only get information on markets where you have an assistant. Similarly, you can only interact with a market when an assistant is at its location. You can start out by calling `GET: /my/markets`, and assuming your assistants are all at the starting location you should get info on the `Homestead Farm Instant Mail Order Catalogue`. As always, the `GET: /my/markets/{location-symbol}` endpoint works to select only one.
 
-For the sake of this guide I'll assume you've already familiarized yourself with the content of the (Guide to Assistants & Travel)[], and know how to travel. So, send a caravan to Yudoa (TS-PR-YD) and unpack it once it arrives. Now call the markets endpoint again and you should see the `Yudoa General Store` added to the response. For the sake of this demonstration, we'll buy 1 average size potato, sell it back, then buy some cabbage seeds. See the example below.
+For the sake of this guide I'll assume you've already familiarized yourself with the content of the [Guide to Caravans and Assistants](https://apricate.stoplight.io/docs/apricate/ZG9jOjUwNTE1ODc3-guide-to-caravans-and-assistants), and know how to travel. So, send a caravan to Yudoa (TS-PR-YD) and unpack it once it arrives. Now call the markets endpoint again and you should see the `Yudoa General Store` added to the response. For the sake of this demonstration, we'll buy 1 average size potato, sell it back, then buy some cabbage seeds. See the example below.
 
 **NOTE:** Market prices for PRODUCE are for the Miniature variety. Prices are multiplied by the numeric size of the produce. So for Average produce, multiply by 16.
 
