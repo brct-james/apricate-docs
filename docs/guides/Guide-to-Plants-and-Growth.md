@@ -34,9 +34,9 @@ Growth stages are defined in the plant definition, and always require the use of
 
 - **repeatable** A boolean field, if true the growth stage will be repeated until skipped or the plot is cleared. See repeatable stages below
 
-- **consumable_options** An unordered list of every consumable option. Unless the stage is skippable, one and only one consumable option must be selected in the interact request body to advance this stage. Some options may require more or less quantity, and may have an added_yield (see below for more info). Quantity should be multiplied by plant size and number of plants in the plot to get the actual quantity needed
+- **consumable_options** An unordered list of every consumable option. Unless the stage is skippable, one and only one consumable option must be selected in the interact request body to advance this stage. Some options may require more or less quantity, and may have an added_yield (see below for more info). Quantity should be multiplied by plant size and number of plants in the plot to get the actual quantity needed. Skipping a stage does not consume any items
 
-- **added_yield** This field contains the amount of yield added by this stage. While typically zero, optional stages (where skippable is true) may have a non-zero value for this field. When consumables are included this field is always zero, as optional consumables include added_yield on the consumables themselves. See plant yield below
+- **added_yield** This field contains the amount of yield added by this stage. While typically zero, optional stages (where skippable is true) may have a non-zero value for this field. When consumables are included this field is always zero, as optional consumables include added_yield on the consumables themselves. Ignored when skipped. See plant yield below
 
 - **growth_time** This field contains the time in seconds that the plant will be growing and uninteractable after completing the given stage. Skipping a stage also skips the growth time
 
@@ -47,6 +47,18 @@ Growth stages are defined in the plant definition, and always require the use of
 - - **final_harvest** A boolean field, if true then harvesting the stage will automatically clear the plot afterwards. If the stage is skippable, skipping the harvest will not clear the plot
 
 ### Skippable Stages
+
+If a growth stage includes `skippable: true` then you can call the `PATCH: /my/plots/{plot-id}/interact` with the "skip" action to skip the stage, e.g.:
+
+```json
+{
+    "action": "skip"
+}
+```
+
+Skipping a stage means consumables are not used, added_yield is not added, harvest is ignored, and growth_time does not apply. Skipping a stage can be helpful to skip an expensive set of consumables or want to bypass an early final_harvest (e.g. with the Gulb plant you can optionally harvest it early or let it continue to grow for additional yield).
+
+You cannot skip an action with `skippable: false`
 
 ### Repeatable Stages
 
