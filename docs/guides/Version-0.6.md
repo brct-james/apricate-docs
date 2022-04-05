@@ -74,7 +74,7 @@ Note: The trade/cargo system is fairly different than in space traders. Rather t
 
 ### Ratelimiting
 
-Ratelimiting is implemented, you should have 4 calls per second with an additional 4/s burst.
+Ratelimiting is implemented as a leaky bucket, with a size ("burst") of 4 and a 4/s refil (specifically 1/250ms).
 
 ## Changes to Existing Systems
 
