@@ -12,6 +12,8 @@ You can only get information on markets where you have an assistant. Similarly, 
 
 For the sake of this guide I'll assume you've already familiarized yourself with the content of the (Guide to Assistants & Travel)[], and know how to travel. So, send a caravan to Yudoa (TS-PR-YD) and unpack it once it arrives. Now call the markets endpoint again and you should see the `Yudoa General Store` added to the response. For the sake of this demonstration, we'll buy 1 average size potato, sell it back, then buy some cabbage seeds. See the example below.
 
+**NOTE:** Market prices for PRODUCE are for the Miniature variety. Prices are multiplied by the numeric size of the produce. So for Average produce, multiply by 16.
+
 ## Market Orders
 
 To conduct business at a market, you must call `PATCH: /my/markets/{location-symbol}/order` and send a valid Market Order as the request body. These will always have 5 fields:
