@@ -1,5 +1,6 @@
 ---
 tags: [Guides]
+internal: true
 ---
 
 # Guide to Assistants and Caravans
