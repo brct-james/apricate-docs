@@ -41,10 +41,13 @@ properties:
     properties:
       currencies:
         type: object
+        description: 'map[string]int'
       favor:
         type: object
+        description: 'map[string]int'
       escrow:
         type: object
+        description: 'map[string]int'
   arcane_flux:
     type: integer
   distortion_tier:
