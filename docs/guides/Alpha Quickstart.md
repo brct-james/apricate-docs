@@ -12,7 +12,7 @@ Though the initial learning curve may at first appear steep, the game should all
 
 ## v0.6 "Assistants" Update
 
-[Patch notes](apricate.io/docs/v0-6)
+[Patch notes](https://apricate.io/docs/v0-6)
 
 ## Setting Summary
 
