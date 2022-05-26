@@ -11,6 +11,8 @@ x-examples:
       favor:
         Vince Kosuga: 50
       escrow: {}
+    arcane_flux: 5
+    distortion_tier: 1
     user-since: 1647896254
     achievements:
       - Noob
@@ -27,6 +29,7 @@ x-examples:
       - trian|Farm-TS-PR-HF|Plot-3
     warehouses:
       - trian|Warehouse-TS-PR-HF
+     lattice_interference_rejection_end: 1647896300
 examples:
   - token: string
     username: string
@@ -35,6 +38,8 @@ examples:
       currencies: {}
       favor: {}
       escrow: {}
+    arcane_flux: integer
+    distortion_tier: integer
     user-since: 0
     achievements:
       - string
@@ -48,6 +53,7 @@ examples:
       - string
     warehouses:
       - string
+    lattice_interference_rejection_end: integer
 properties:
   token:
     type: string
@@ -80,6 +86,7 @@ properties:
     type: number
   user-since:
     type: number
+    description: Unix Timestamp
   achievements:
     type: array
     items:
