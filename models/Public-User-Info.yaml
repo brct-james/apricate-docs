@@ -10,6 +10,8 @@ x-examples:
       favor:
         Vince Kosuga: 50
       escrow: {}
+    arcane_flux: 5
+    distortion_tier: 1
     user-since: 1647895469
     achievements:
       - Owner
@@ -22,6 +24,8 @@ examples:
       currencies: {}
       favor: {}
       escrow: {}
+    arcane_flux: 0
+    distortion_tier: 0
     user-since: 0
     achievements:
       - string

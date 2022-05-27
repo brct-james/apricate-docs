@@ -20,6 +20,8 @@ x-examples:
       - trian|Contract-0
     assistants:
       - trian|Assistant-0
+    caravans: 
+      - trian|Caravan-0
     farms:
       - trian|Farm-TS-PR-HF
     plots:
@@ -29,7 +31,7 @@ x-examples:
       - trian|Farm-TS-PR-HF|Plot-3
     warehouses:
       - trian|Warehouse-TS-PR-HF
-     lattice_interference_rejection_end: 1647896300
+    lattice_interference_rejection_end: 1647896300,
 examples:
   - token: string
     username: string
@@ -46,6 +48,8 @@ examples:
     contracts:
       - string
     assistants:
+      - string
+    caravans:
       - string
     farms:
       - string
